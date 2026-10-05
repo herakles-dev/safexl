@@ -1,0 +1,11 @@
+groq openai/gpt-oss-20b
+groq qwen/qwen3.8-27b
+mistral open-mistral-nemo
+groq openai/gpt-oss-120b
+cohere command-a-03-2025
+openrouter nvidia/nemotron-3-super-120b-a12b:free
+cohere command-a-plus-05-2026
+openrouter poolside/laguna-s-2.1:free
+openrouter qwen/qwen3.8-27b:free
+cohere command-r-plus-08-2024
+mistral ministral-8b-latest

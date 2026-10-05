@@ -1,0 +1,1769 @@
+[
+  {
+    "id": "budget-t1-electric-increase",
+    "workbook": "research/xlsx-bench/corpus/simple-monthly-budget.xlsx",
+    "tier": 1,
+    "kind": "value",
+    "prompt": "My electric bill went up this month — change it to $135.",
+    "expect": {
+      "cells": [
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C12",
+          "value": 135.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "E4",
+          "value": 2351.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "F9",
+          "value": 2351.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "G9",
+          "value": 1399.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "H4",
+          "value": 0.6269333333333333,
+          "tol": 0.0001
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "images",
+      "charts",
+      "tables",
+      "conditional_formatting",
+      "defined_names",
+      "merged_cells"
+    ],
+    "notes": "Original Electric (C12) = 120, part of tblExpenses summed by defined name TotalMonthlyExpenses = SUM(tblExpenses[Amount]); LibreOffice recalc of the original gives E4=F9=2336 (=TotalMonthlyExpenses), G9=1414 (Income 3750 minus 2336), H4=0.6229333... (2336/3750). Raising C12 to 135 adds 15 to the expense total: new total = 2336+15 = 2351.00. E4 and F9 both read the same defined name so both become 2351.00; G9 = 3750-2351.00 = 1399.00; H4 = 2351.00/3750 = 0.626933. TotalMonthlyIncome (3750) is untouched since C12 is an expense, not income."
+  },
+  {
+    "id": "budget-t2-expense-pct-column",
+    "workbook": "research/xlsx-bench/corpus/simple-monthly-budget.xlsx",
+    "tier": 2,
+    "kind": "formula_column",
+    "prompt": "Add a column next to the expense list that shows what percentage of total monthly expenses each item represents.",
+    "expect": {
+      "cells": [
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "D11",
+          "value": 0.3424657534246575,
+          "tol": 0.0005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "D23",
+          "value": 0.021404109589041095,
+          "tol": 0.0005
+        }
+      ],
+      "formulas": [
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "D11",
+          "contains": "TotalMonthlyExpenses"
+        }
+      ],
+      "tables": [
+        {
+          "name": "tblExpenses",
+          "ref": "B10:D23"
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "images",
+      "charts",
+      "tables",
+      "conditional_formatting",
+      "defined_names",
+      "merged_cells"
+    ],
+    "notes": "tblExpenses is B10:C23 (header row10, 13 data rows 11-23: Rent 800, Electric 120, Gas 50, Cell phone 45, Groceries 500, Car payment 273, Auto expenses 120, Student loans 50, Credit cards 100, Auto Insurance 78, Personal care 50, Entertainment 100, Miscellaneous 50; sum=2336, matches TotalMonthlyExpenses). Adding a column D ('% of Total') grows the table to B10:D23. D11 (Rent) = 800/2336 = 0.342466; D23 (Miscellaneous) = 50/2336 = 0.021404. Any correct formula divides by the same 2336 total (e.g. via the TotalMonthlyExpenses defined name or SUM(tblExpenses[Amount])); we only spot-check the first and last data row."
+  },
+  {
+    "id": "budget-t3-expenses-3pct-raise",
+    "workbook": "research/xlsx-bench/corpus/simple-monthly-budget.xlsx",
+    "tier": 3,
+    "kind": "bulk",
+    "prompt": "Give every expense a 3% increase, rounded to the nearest cent.",
+    "expect": {
+      "cells": [
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C11",
+          "value": 824.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C12",
+          "value": 123.6,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C13",
+          "value": 51.5,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C14",
+          "value": 46.35,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C15",
+          "value": 515.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C16",
+          "value": 281.19,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C17",
+          "value": 123.6,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C18",
+          "value": 51.5,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C19",
+          "value": 103.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C20",
+          "value": 80.34,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C21",
+          "value": 51.5,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C22",
+          "value": 103.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C23",
+          "value": 51.5,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "E4",
+          "value": 2406.08,
+          "tol": 0.01
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "F9",
+          "value": 2406.08,
+          "tol": 0.01
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "G9",
+          "value": 1343.92,
+          "tol": 0.01
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "H4",
+          "value": 0.6416213333333333,
+          "tol": 0.0005
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "images",
+      "charts",
+      "tables",
+      "conditional_formatting",
+      "defined_names",
+      "merged_cells"
+    ],
+    "notes": "Applied *1.03 then round to cents to each of the 13 tblExpenses amounts (original values from the LibreOffice recalc of the original, which match the raw literals 800,120,50,45,500,273,120,50,100,78,50,100,50): new values [824.0, 123.6, 51.5, 46.35, 515.0, 281.19, 123.6, 51.5, 103.0, 80.34, 51.5, 103.0, 51.5]. New total = 2406.08 (was 2336). E4/F9 read the TotalMonthlyExpenses defined name so both become 2406.08; G9 = 3750-2406.08 = 1343.92; H4 = 2406.08/3750 = 0.641621."
+  },
+  {
+    "id": "budget-t4-insert-parking-row",
+    "workbook": "research/xlsx-bench/corpus/simple-monthly-budget.xlsx",
+    "tier": 4,
+    "kind": "insert_row",
+    "prompt": "I need to add a new monthly expense: Parking, $85. Put it right after Groceries in the expense list.",
+    "expect": {
+      "text_cells": [
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "B16",
+          "value": "Parking"
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "B24",
+          "value": "Miscellaneous"
+        }
+      ],
+      "cells": [
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C16",
+          "value": 85.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C17",
+          "value": 273.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "C24",
+          "value": 50.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "E4",
+          "value": 2421.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "F9",
+          "value": 2421.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "G9",
+          "value": 1329.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "Simple Monthly Budget",
+          "ref": "H4",
+          "value": 0.6456,
+          "tol": 0.0005
+        }
+      ],
+      "tables": [
+        {
+          "name": "tblExpenses",
+          "ref": "B10:C24"
+        }
+      ],
+      "chart_series": [
+        {
+          "part": "xl/charts/chart1.xml",
+          "val_ref": "'Simple Monthly Budget'!$E$9:$F$9"
+        }
+      ],
+      "cf_sqrefs": [
+        {
+          "sheet": "Simple Monthly Budget",
+          "sqref": "E4"
+        }
+      ],
+      "defined_names": {
+        "TotalMonthlyExpenses": "SUM(tblExpenses[Amount])",
+        "TotalMonthlyIncome": "SUM(tblIncome[Amount])"
+      },
+      "no_new_errors": true
+    },
+    "preserve": [
+      "images",
+      "charts",
+      "tables",
+      "conditional_formatting",
+      "defined_names",
+      "merged_cells"
+    ],
+    "notes": "Original expense rows: Rent(11) 800, Electric(12) 120, Gas(13) 50, Cell phone(14) 45, Groceries(15) 500, Car payment(16) 273, ... Miscellaneous(23) 50. Inserting Parking/$85 right after Groceries (row15) makes it the new row16, pushing Car payment..Miscellaneous down one row each (old row16->17 ... old row23->24); table tblExpenses grows from B10:C23 to B10:C24. New total = 2336+85 = 2421.00; E4/F9 = 2421.00; G9 = 3750-2421.00 = 1329.00; H4 = 0.645600. Chart1's val_ref ('Simple Monthly Budget'!$E$9:$F$9) and the CF dataBar sqref (E4) sit above the table (rows 4-9) so they are untouched by a row insert at/after row15 -- only their computed values change, not their refs. Checked C17=273 (Car payment, shifted) and C24/B24=Miscellaneous/50 (shifted) to prove nothing below the insertion point was corrupted."
+  },
+  {
+    "id": "budget-t5-rename-sheet",
+    "workbook": "research/xlsx-bench/corpus/simple-monthly-budget.xlsx",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Rename the budget tab from “Simple Monthly Budget” to “October Budget”.",
+    "expect": {
+      "sheet_names": [
+        "October Budget"
+      ],
+      "cells": [
+        {
+          "sheet": "October Budget",
+          "ref": "E4",
+          "value": 2336.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "October Budget",
+          "ref": "F9",
+          "value": 2336.0,
+          "tol": 0.005
+        }
+      ],
+      "chart_series": [
+        {
+          "part": "xl/charts/chart1.xml",
+          "val_ref": "'October Budget'!$E$9:$F$9"
+        }
+      ],
+      "cf_sqrefs": [
+        {
+          "sheet": "October Budget",
+          "sqref": "E4"
+        }
+      ],
+      "tables": [
+        {
+          "name": "tblExpenses",
+          "ref": "B10:C23"
+        },
+        {
+          "name": "tblIncome",
+          "ref": "B4:C7"
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "images",
+      "charts",
+      "tables",
+      "conditional_formatting",
+      "defined_names",
+      "merged_cells"
+    ],
+    "notes": "Only sheet in the workbook is 'Simple Monthly Budget'; renaming it to 'October Budget' is the only sheet_op tier5 shape this single-sheet workbook supports (no second sheet to add cross-sheet formulas from). Chart1's val_ref is the one formula in the workbook that textually embeds the sheet name ('Simple Monthly Budget'!$E$9:$F$9), so a correct rename must rewrite it to 'October Budget'!$E$9:$F$9 -- this ref does NOT exist in the original workbook, it is the expected post-rename state. Table refs, CF sqref, and defined names (SUM(tblExpenses[Amount]) etc.) don't textually embed the sheet name so they are unchanged; only their 'owning sheet' label flips to the new name."
+  },
+  {
+    "id": "benefits-t1-gender-exclusion-fix",
+    "workbook": "research/xlsx-bench/corpus/benefits-contribution-calculator.xlsm",
+    "tier": 1,
+    "kind": "value",
+    "prompt": "On the Enrollment Restrictions tab, the sample-size reconciliation line 'Minus Gender=\"U\"' is entered as -155. It was undercounted — it should be -200. Fix it and let the final count update.",
+    "expect": {
+      "cells": [
+        {
+          "sheet": "Enrollment Restrictions",
+          "ref": "C28",
+          "value": -200.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Enrollment Restrictions",
+          "ref": "C29",
+          "value": 2303513.0,
+          "tol": 0.5
+        }
+      ],
+      "formulas": [
+        {
+          "sheet": "Enrollment Restrictions",
+          "ref": "C29",
+          "contains": "SUM("
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "vba",
+      "data_validations",
+      "defined_names",
+      "merged_cells",
+      "protection",
+      "frozen_panes"
+    ],
+    "notes": "C29 = SUM(C25:C28); original recalc: C25=2333641, C26=-28312, C27=-1616, C28=-155 -> C29=2303558 (matches the file's cached 2303558). Changing C28 to -200 gives C29 = 2333641+(-28312)+(-1616)+(-200) = 2303513."
+  },
+  {
+    "id": "benefits-t2-medical-pct-of-enrollees",
+    "workbook": "research/xlsx-bench/corpus/benefits-contribution-calculator.xlsm",
+    "tier": 2,
+    "kind": "formula_column",
+    "prompt": "On the medical continuance table, add a column showing what percentage of the total enrollees (across all spending buckets) each row represents.",
+    "expect": {
+      "no_new_errors": true,
+      "column_values": [
+        {
+          "sheet": "MV Cont. Table - Medical",
+          "rows": {
+            "5": 0.12975018673222954,
+            "88": 5.544541280297948e-06
+          },
+          "tol": 0.0005,
+          "label": "new column on MV Cont. Table - Medical"
+        }
+      ]
+    },
+    "preserve": [
+      "vba",
+      "data_validations",
+      "defined_names",
+      "merged_cells",
+      "protection",
+      "frozen_panes"
+    ],
+    "notes": "Column B (Number of Enrollees), rows 5-88 (84 spending buckets from 'Up To' 0 to 'Unlimited'), sums to 1262503 (LibreOffice recalc of the original -- these are raw literals, not formulas). New column M ('% of Total Enrollees') = B{row}/SUM($B$5:$B$88). M5 = 163810/1262503 = 0.12975019; M88 = 7/1262503 = 0.00000554. We spot-check the first and last of the 84 rows rather than all of them. This sheet is a plain range, not an Excel Table, so there is no table ref to grow. | 2026-09-26: converted to a position-independent column_values check. The prompt never says which column to use, and in the first recorded run Claude reasonably put the benefits column at EA (to keep the workbook's macros, which read fixed column positions, intact). Where the column goes is the editor's call; the values are the task. The formula-contains check was dropped with the fixed position."
+  },
+  {
+    "id": "benefits-t3-medical-trend-6-5pct",
+    "workbook": "research/xlsx-bench/corpus/benefits-contribution-calculator.xlsm",
+    "tier": 3,
+    "kind": "bulk",
+    "prompt": "Trend the 'Avg. Cost per Enrollee (Bucket)' column on the medical continuance table forward by 6.5%, rounded to the nearest cent.",
+    "expect": {
+      "cells": [
+        {
+          "sheet": "MV Cont. Table - Medical",
+          "ref": "D5",
+          "value": 0.0,
+          "tol": 0.005
+        },
+        {
+          "sheet": "MV Cont. Table - Medical",
+          "ref": "D6",
+          "value": 74.93,
+          "tol": 0.005
+        },
+        {
+          "sheet": "MV Cont. Table - Medical",
+          "ref": "D87",
+          "value": 1376957.12,
+          "tol": 0.005
+        },
+        {
+          "sheet": "MV Cont. Table - Medical",
+          "ref": "D88",
+          "value": 3065575.78,
+          "tol": 0.005
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "vba",
+      "data_validations",
+      "defined_names",
+      "merged_cells",
+      "protection",
+      "frozen_panes"
+    ],
+    "notes": "The workbook's own User Guide (sheet 'User Guide', cell B6) documents that its data 'is then projected forward to 2014 values at a growth rate of 6.5% per year' -- this task applies that same documented trend rate to column D (Avg. Cost per Enrollee (Bucket)), rows 5-88. Original D5=0.00, D6=70.354879237, D87=1292917.4881, D88=2878474.9072 (LibreOffice recalc of the original literals). *1.065 rounded to cents: D5=0.0, D6=74.93, D87=1376957.12, D88=3065575.78. Spot-checked first two and last two of the 84 rows."
+  },
+  {
+    "id": "benefits-t4-insert-duplicate-exclusion",
+    "workbook": "research/xlsx-bench/corpus/benefits-contribution-calculator.xlsm",
+    "tier": 4,
+    "kind": "insert_row",
+    "prompt": "We also need to exclude duplicate records from the sample-size reconciliation on the Enrollment Restrictions tab: add a new line 'Minus Duplicate Records' for -50, right after the 'Minus Gender=\"U\"' line and before the final count.",
+    "expect": {
+      "text_cells": [
+        {
+          "sheet": "Enrollment Restrictions",
+          "ref": "B29",
+          "value": "Minus Duplicate Records"
+        },
+        {
+          "sheet": "Enrollment Restrictions",
+          "ref": "B30",
+          "value": "Final Count"
+        }
+      ],
+      "cells": [
+        {
+          "sheet": "Enrollment Restrictions",
+          "ref": "C29",
+          "value": -50.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Enrollment Restrictions",
+          "ref": "C30",
+          "value": 2303508.0,
+          "tol": 0.5
+        }
+      ],
+      "formulas": [
+        {
+          "sheet": "Enrollment Restrictions",
+          "ref": "C30",
+          "contains": "SUM("
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "vba",
+      "data_validations",
+      "defined_names",
+      "merged_cells",
+      "protection",
+      "frozen_panes"
+    ],
+    "notes": "Original rows: 25='All Members' 2333641, 26='Minus Zero Spending and Negative AV' -28312, 27='Minus Imputed Coinsurance Restriction' -1616, 28='Minus Gender=\"U\"' -155, 29='Final Count' =SUM(C25:C28)=2303558. Inserting a new row between 28 and 29 makes the new line row29 and pushes 'Final Count' to row30; a correct insert expands the SUM to C25:C29 automatically. New Final Count = 2333641-28312-1616-155-50 = 2303508. The sheet's merged cells (all in rows 5-16) and the workbook's DV gates (all on 'MV Calculator', untouched) sit well above/outside row 24-30, so they are unaffected by this insert."
+  },
+  {
+    "id": "benefits-t5-add-summary-sheet",
+    "workbook": "research/xlsx-bench/corpus/benefits-contribution-calculator.xlsm",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Add a new sheet at the end named ‘Summary’ that shows: the final adjusted sample count from Enrollment Restrictions, and the total number of enrollees across all spending buckets on the medical continuance table.",
+    "expect": {
+      "sheet_names": [
+        "Sheet2",
+        "User Guide",
+        "Enrollment Restrictions",
+        "MV Calculator",
+        "MV Cont. Table - Medical",
+        "MV Cont. Table - Rx Only",
+        "MV Cont. Table - Combined",
+        "Variation Results",
+        "Summary"
+      ],
+      "no_new_errors": true,
+      "sheet_contains": [
+        {
+          "sheet": "Summary",
+          "values": [
+            {
+              "value": 2303558.0,
+              "tol": 0.5,
+              "formula_contains": "Enrollment Restrictions"
+            },
+            {
+              "value": 1262503.0,
+              "tol": 0.5,
+              "formula_contains": "SUM("
+            }
+          ]
+        }
+      ]
+    },
+    "preserve": [
+      "vba",
+      "data_validations",
+      "defined_names",
+      "merged_cells",
+      "protection",
+      "frozen_panes"
+    ],
+    "notes": "New 'Summary' sheet appended after the existing 8 sheets. B1 = 'Enrollment Restrictions'!C29 (2303558, the pristine original final count, unrelated to the t1/t4 tasks which each start from a fresh copy). B2 = SUM('MV Cont. Table - Medical'!B5:B88) = 1262503. This workbook has zero pre-existing cross-sheet formulas, so this is the only way to exercise the tier5 'add a summary sheet with cross-sheet formulas' shape rather than a rename (a rename here would have no formula to ripple through, since nothing in the workbook textually references another sheet by name). | 2026-09-26: converted to a position-independent sheet_contains check. The prompt never says which cells to use, and in the first recorded runs both arms built correct summary sheets with a header row, putting the values in B4-B6 rather than B1-B2. Each value must appear somewhere on the new sheet, as a live formula containing the original check's text where one was given."
+  },
+  {
+    "id": "structrefs-t1-fix-2000-total1",
+    "workbook": "research/xlsx-bench/corpus/structured-refs-lookup-tool.xlsx",
+    "tier": 1,
+    "kind": "value",
+    "prompt": "The nationwide total1 figure for 2000 in the raw data was entered as 40,876,726. It should be 41,000,000 — please fix it.",
+    "expect": {
+      "cells": [
+        {
+          "sheet": "query2",
+          "ref": "M2",
+          "value": 41000000.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Profile",
+          "ref": "C8",
+          "value": 41000000.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Profile",
+          "ref": "C24",
+          "value": 41000000.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Profile",
+          "ref": "D8",
+          "value": 51.48207317073171,
+          "tol": 0.01
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "charts",
+      "tables",
+      "conditional_formatting",
+      "data_validations",
+      "defined_names",
+      "external_links",
+      "merged_cells"
+    ],
+    "notes": "query2!M2 is the literal 'total1' figure for data_year 2000 in the Table_Query_from_RDS2 nationwide-summary table (L1:S15, one row per year 2000-2013). Profile!C8 = VLOOKUP(2000, Table_Query_from_RDS2[#All], 2, FALSE) when B3='All States' (the default), so it mirrors M2 exactly: 40876726 -> 41000000. Profile!C24 = VLOOKUP(2000,$B$7:$N$21,2,FALSE)*1 (Category 1 maps to column 2 / factor 1 via droptable), i.e. the same value: 41000000. Profile!D8 = E8/C8*1000 where E8 (total2, column N, position3) is untouched at 2110765: D8 = 2110765/41000000*1000 = 51.482073. All other Profile columns for row8 (F,G,H,I,J,K,L,M,N,P) read different RDS2 columns and are unaffected."
+  },
+  {
+    "id": "structrefs-t2-yoy-total1-column",
+    "workbook": "research/xlsx-bench/corpus/structured-refs-lookup-tool.xlsx",
+    "tier": 2,
+    "kind": "formula_column",
+    "prompt": "On the 14-year nationwide summary table, add a column showing each year's percent change in total1 versus the prior year. Leave the first year blank since there's no prior year to compare.",
+    "expect": {
+      "cells": [
+        {
+          "sheet": "query2",
+          "ref": "T3",
+          "value": -0.02090179629356813,
+          "tol": 0.0005
+        },
+        {
+          "sheet": "query2",
+          "ref": "T15",
+          "value": -0.001282066790104352,
+          "tol": 0.0005
+        }
+      ],
+      "formulas": [
+        {
+          "sheet": "query2",
+          "ref": "T3",
+          "contains": "M3",
+          "contains_any": [
+            "M3",
+            "[total1]"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "Table_Query_from_RDS2",
+          "ref": "L1:T15"
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "charts",
+      "tables",
+      "conditional_formatting",
+      "data_validations",
+      "defined_names",
+      "external_links",
+      "merged_cells"
+    ],
+    "notes": "Table_Query_from_RDS2 is L1:S15 (header row1, 14 data rows for years 2000-2013, column M=total1: [40876726, 40022329, 35752745, 45744604, 46097753, 37477964, 44177733, 47006743, 49839764, 41571659, 55810488, 59439084, 57538344, 57464576]). Adding column T ('YoY % Change') grows the table to L1:T15. T2 (year 2000) has no prior year so it's left blank; T3 (2001) = (M3-M2)/M2 = (40022329-40876726)/40876726 = -0.020902; T15 (2013) = (M15-M14)/M14 = (57464576-57538344)/57538344 = -0.001282. | 2026-09-26: formula check accepts the table's structured references too (contains_any): inside an Excel Table, [@col]/[[#This Row],[col]] is a correct, arguably better way to write the formula."
+  },
+  {
+    "id": "structrefs-t3-total2-5pct-raise",
+    "workbook": "research/xlsx-bench/corpus/structured-refs-lookup-tool.xlsx",
+    "tier": 3,
+    "kind": "bulk",
+    "prompt": "Revise the nationwide 'total2' figures in the summary table: every year's total2 should be 5% higher than currently recorded, rounded to the nearest whole number.",
+    "expect": {
+      "cells": [
+        {
+          "sheet": "query2",
+          "ref": "N2",
+          "value": 2216303.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "query2",
+          "ref": "N15",
+          "value": 2338268.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Profile",
+          "ref": "E8",
+          "value": 2216303.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Profile",
+          "ref": "D8",
+          "value": 54.21919064653074,
+          "tol": 0.01
+        },
+        {
+          "sheet": "Profile",
+          "ref": "F8",
+          "value": 0.14946376916874632,
+          "tol": 0.0005
+        },
+        {
+          "sheet": "Profile",
+          "ref": "H8",
+          "value": 0.3044791258234998,
+          "tol": 0.0005
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "charts",
+      "tables",
+      "conditional_formatting",
+      "data_validations",
+      "defined_names",
+      "external_links",
+      "merged_cells"
+    ],
+    "notes": "Original total2 (column N, RDS2 table) for years 2000-2013: [2110765, 2205052, 1993705, 1542806, 1544314, 1825401, 2210730, 1883253, 2079330, 2030961, 1910462, 1718368, 1997964, 2226922]. *1.05 rounded to whole numbers: [2216303, 2315305, 2093390, 1619946, 1621530, 1916671, 2321266, 1977416, 2183296, 2132509, 2005985, 1804286, 2097862, 2338268]. Profile!E8 (year 2000) = VLOOKUP(2000,RDS2,3,FALSE) mirrors N2 directly: 2110765 -> 2216303. Spot-checking year-2000 ripple (row8): D8=E8/C8*1000 with C8 unaffected (40876726) = 2216303/40876726*1000 = 54.219191; F8=G8/E8 with G8 unaffected (331257) = 331257/2216303 = 0.149464; H8=I8/E8 with I8 unaffected (674818) = 674818/2216303 = 0.304479. (C24:C37/'Category 1' view is unaffected since it maps to total1/column M, not total2.)"
+  },
+  {
+    "id": "structrefs-t4-add-guam-to-dropdowns",
+    "workbook": "research/xlsx-bench/corpus/structured-refs-lookup-tool.xlsx",
+    "tier": 4,
+    "kind": "insert_row",
+    "prompt": "Add Guam as a new option in the state dropdowns on the 'dropdowns' tab — it needs to show up both in the plain state list and in the state-or-All-States list, in alphabetical order.",
+    "expect": {
+      "text_cells": [
+        {
+          "sheet": "dropdowns",
+          "ref": "A13",
+          "value": "Guam"
+        },
+        {
+          "sheet": "dropdowns",
+          "ref": "A14",
+          "value": "Hawaii"
+        },
+        {
+          "sheet": "dropdowns",
+          "ref": "C14",
+          "value": "Guam"
+        },
+        {
+          "sheet": "dropdowns",
+          "ref": "C15",
+          "value": "Hawaii"
+        }
+      ],
+      "defined_names": {
+        "state": "dropdowns!$A$2:$A$54",
+        "states": "dropdowns!$C$2:$C$55"
+      },
+      "no_new_errors": true
+    },
+    "preserve": [
+      "charts",
+      "tables",
+      "conditional_formatting",
+      "data_validations",
+      "defined_names",
+      "external_links",
+      "merged_cells"
+    ],
+    "notes": "This workbook keeps two independent, row-offset copies of the state list on 'dropdowns': column A (defined name 'state' = $A$2:$A$53, 52 states, no 'All States') and column C (defined name 'states' = $C$2:$C$54, 53 entries, 'All States' first then the same 52 states) -- C is shifted one row below A because of that extra header entry. Alphabetically 'Guam' falls between 'Georgia' and 'Hawaii' in both lists: in column A that's between A12 (Georgia) and old A13 (Hawaii) -> new A13='Guam', Hawaii shifts to A14; in column C that's between C13 (Georgia) and old C14 (Hawaii) -> new C14='Guam', Hawaii shifts to C15. A single whole-row insert would NOT correctly place 'Guam' in both columns at once (they're offset by one row), so this requires two independent column-scoped inserts. Each defined name's range grows by exactly one cell: 'state' $A$2:$A$53 -> $A$2:$A$54; 'states' $C$2:$C$54 -> $C$2:$C$55. The Category list (E1:G13) and droptable/dropdown named ranges live entirely above row 14 in columns E:G, so a correct (column-scoped) edit leaves them untouched; a naive full-row insert at row13 or row14 would corrupt them, which this task tests for indirectly via the merged/defined-name preserve check."
+  },
+  {
+    "id": "structrefs-t5-rename-list-sheet",
+    "workbook": "research/xlsx-bench/corpus/structured-refs-lookup-tool.xlsx",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Rename the 'List' tab to 'State Detail'.",
+    "expect": {
+      "sheet_names": [
+        "Profile",
+        "State Detail",
+        "Query",
+        "dropdowns",
+        "query2"
+      ],
+      "formulas": [
+        {
+          "sheet": "Query",
+          "ref": "A2",
+          "contains": "'State Detail'!$B$3"
+        },
+        {
+          "sheet": "Query",
+          "ref": "A2000",
+          "contains": "'State Detail'!$B$3"
+        },
+        {
+          "sheet": "Query",
+          "ref": "A3799",
+          "contains": "'State Detail'!$B$3"
+        }
+      ],
+      "defined_names": {
+        "_xlnm.Print_Area#localSheetId=1": "'State Detail'!$A$5:$L$121",
+        "_xlnm.Print_Titles#localSheetId=1": "'State Detail'!$5:$6"
+      },
+      "dv_sqrefs": [
+        {
+          "sheet": "State Detail",
+          "sqref": "B3"
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "charts",
+      "tables",
+      "conditional_formatting",
+      "data_validations",
+      "defined_names",
+      "external_links",
+      "merged_cells"
+    ],
+    "notes": "All 3798 data-row formulas in Query!A2:A3799 contain the literal cross-sheet reference 'List!$B$3' (confirmed via inventory.py's cross_sheet_formulas scan -- every one of the 3798 hits referencing 'List!' lives on the Query sheet, none elsewhere). Renaming 'List' (no space, so unquoted in formulas) to 'State Detail' (has a space, so Excel must quote it) means every one of those 3798 formulas must become 'State Detail'!$B$3 -- we spot-check the first (A2), a middle (A2000), and the last (A3799) data row rather than asserting all 3798. 'State Detail'!$B$3 does not appear anywhere in the original file; it is the expected post-rename text. The sheet's own _xlnm.Print_Area/_xlnm.Print_Titles defined names (localSheetId=1, i.e. scoped to the List/State Detail sheet itself) also textually embed the old name and must update. No other sheet formula anywhere in the workbook references 'List!' (verified: 0 hits outside Query), so this is the full ripple."
+  },
+  {
+    "id": "pivotrpt-t1sub-category-totals-sheet",
+    "workbook": "research/xlsx-bench/corpus/pivot-chart-report.xlsx",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Add a new sheet called 'Category Totals' with a formula that adds up the whole Cost column and a formula that adds up the whole Revenue column from the raw data sheet.",
+    "expect": {
+      "sheet_names": [
+        "Sheet1",
+        "Sheet6",
+        "Sheet5",
+        "Sheet4",
+        "Sheet3",
+        "Sheet2",
+        "Chart2",
+        "Category Totals"
+      ],
+      "no_new_errors": true,
+      "sheet_contains": [
+        {
+          "sheet": "Category Totals",
+          "values": [
+            {
+              "value": 56808729.0,
+              "tol": 0.5,
+              "formula_contains": "SUM("
+            },
+            {
+              "value": 68366467.438,
+              "tol": 0.5,
+              "formula_contains": "SUM("
+            }
+          ]
+        }
+      ]
+    },
+    "preserve": [
+      "charts",
+      "pivot_tables",
+      "pivot_caches",
+      "merged_cells"
+    ],
+    "notes": "SUBSTITUTION: this workbook has zero live formulas anywhere (verified by grepping every worksheet XML part for <f> elements: 0 hits across all 6 sheets) -- the 5 pivot tables' numbers are frozen cached values, not formulas, and Sheet1's raw data is plain literals. Tier1's definition ('change an input that feeds formulas, totals must move') has no live formula anywhere to move, so it genuinely doesn't fit; substituted with this second tier5 sheet_op (the schema's own escape hatch: 'replace it with another task of a harder tier'). New sheet 'Category Totals' appended at the end. Sheet1!A2:D13 (raw data, year/category/cost/revenue for 2005-2007 x 4 categories): total Cost = 56808729, total Revenue = 68366467.438 (sum of the 12 raw literal rows). | 2026-09-26: converted to a position-independent sheet_contains check. The prompt never says which cells to use, and in the first recorded runs both arms built correct summary sheets with a header row, putting the values in B4-B6 rather than B1-B2. Each value must appear somewhere on the new sheet, as a live formula containing the original check's text where one was given."
+  },
+  {
+    "id": "pivotrpt-t2-profit-column",
+    "workbook": "research/xlsx-bench/corpus/pivot-chart-report.xlsx",
+    "tier": 2,
+    "kind": "formula_column",
+    "prompt": "On the raw data sheet, add a Profit column (Revenue minus Cost) for each row.",
+    "expect": {
+      "no_new_errors": true,
+      "column_values": [
+        {
+          "sheet": "Sheet1",
+          "rows": {
+            "2": 251345.5,
+            "13": 64681.1875
+          },
+          "tol": 0.01,
+          "label": "new column on Sheet1"
+        }
+      ]
+    },
+    "preserve": [
+      "charts",
+      "pivot_tables",
+      "pivot_caches",
+      "merged_cells"
+    ],
+    "notes": "Sheet1!A1:D13 raw rows (year, category, cost, revenue): [(2005, 'Books', 889017, 1140362.5), (2005, 'Electronics', 13114909, 15883893), (2005, 'mMovies', 768187, 823227.875), (2005, 'MMusic', 583350, 626592.1875), (2006, 'Books', 1025796, 1320585.375), (2006, 'Electronics', 15910763, 19299870), (2006, 'mMovies', 961323, 1032390.813), (2006, 'MMusic', 695300, 748966), (2007, 'Books', 1218726, 1563287.125), (2007, 'Electronics', 19524378, 23654030), (2007, 'mMovies', 1241525, 1333126.375), (2007, 'MMusic', 875455, 940136.1875)]. New column E ('Profit') = D-C per row. E2 (2005 Books) = 1140362.5-889017 = 251345.5; E13 (2007 MMusic) = 940136.1875-875455 = 64681.1875. Sheet1 is a plain range (no Excel Table object in this workbook), so there is no table ref to grow. | 2026-09-26: converted to a position-independent column_values check. The prompt never says which column to use, and in the first recorded run Claude reasonably put the benefits column at EA (to keep the workbook's macros, which read fixed column positions, intact). Where the column goes is the editor's call; the values are the task. The formula-contains check was dropped with the fixed position."
+  },
+  {
+    "id": "pivotrpt-t3-cost-4pct-raise",
+    "workbook": "research/xlsx-bench/corpus/pivot-chart-report.xlsx",
+    "tier": 3,
+    "kind": "bulk",
+    "prompt": "Raise every Cost figure on the raw data sheet by 4%, rounded to the nearest dollar.",
+    "expect": {
+      "cells": [
+        {
+          "sheet": "Sheet1",
+          "ref": "C2",
+          "value": 924578.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "C13",
+          "value": 910473.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "C7",
+          "value": 16547194.0,
+          "tol": 0.5
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "charts",
+      "pivot_tables",
+      "pivot_caches",
+      "merged_cells"
+    ],
+    "notes": "Original Cost column (C2:C13): [889017, 13114909, 768187, 583350, 1025796, 15910763, 961323, 695300, 1218726, 19524378, 1241525, 875455]. *1.04 rounded to the nearest dollar: [924578, 13639505, 798914, 606684, 1066828, 16547194, 999776, 723112, 1267475, 20305353, 1291186, 910473]. Spot-checked first (C2=924578), a middle (C7=16547194, 2006 Electronics) and last (C13=910473) row. This workbook has no formulas depending on Cost (confirmed 0 <f> elements workbook-wide), so there is no further ripple to check -- the pivot tables on Sheet2-6 are frozen cached snapshots, not live, and are covered by the 'pivot_tables'/'pivot_caches' preserve classes (identity/count), not by a recomputed-value check."
+  },
+  {
+    "id": "pivotrpt-t4-insert-games-row",
+    "workbook": "research/xlsx-bench/corpus/pivot-chart-report.xlsx",
+    "tier": 4,
+    "kind": "insert_row",
+    "prompt": "Add a new row to the raw data sheet for a Games category in 2006: cost 450000, revenue 612000. Put it right after the 2006 Electronics row.",
+    "expect": {
+      "text_cells": [
+        {
+          "sheet": "Sheet1",
+          "ref": "B8",
+          "value": "Games"
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "B9",
+          "value": "mMovies"
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "B14",
+          "value": "MMusic"
+        }
+      ],
+      "cells": [
+        {
+          "sheet": "Sheet1",
+          "ref": "A8",
+          "value": 2006.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "C8",
+          "value": 450000.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "D8",
+          "value": 612000.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "A9",
+          "value": 2006.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "C9",
+          "value": 961323.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "A14",
+          "value": 2007.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "C14",
+          "value": 875455.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "D14",
+          "value": 940136.1875,
+          "tol": 0.5
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "charts",
+      "pivot_tables",
+      "pivot_caches",
+      "merged_cells"
+    ],
+    "notes": "Sheet1 rows: 2(2005 Books)...5(2005 MMusic), 6(2006 Books), 7(2006 Electronics), 8(2006 mMovies), 9(2006 MMusic), 10(2007 Books)...13(2007 MMusic). Inserting 'Games'/2006/450000/612000 right after row7 (2006 Electronics) makes it the new row8, pushing the old row8 (mMovies) to row9, row9 (MMusic) to row10, ... old row13 (2007 MMusic) to row14. Checked the inserted row (A8/B8/C8/D8) plus two shifted rows (row9 = old mMovies/2006, row14 = old MMusic/2007) to prove nothing below the insertion point was corrupted or overwritten. The 3 pivot caches all source from Sheet1!A1:D13 (a plain range, not an Excel Table); whether their stored source ref grows to A1:D14 isn't independently assertable under this schema (no 'pivot_caches' key in `expect`), so this task's ripple is checked via the shifted-row cell values and general file validity, not the pivot internals."
+  },
+  {
+    "id": "pivotrpt-t5-rename-sheet2",
+    "workbook": "research/xlsx-bench/corpus/pivot-chart-report.xlsx",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Rename the 'Sheet2' tab (the yearly cost/revenue totals) to 'Yearly Totals'.",
+    "expect": {
+      "sheet_names": [
+        "Sheet1",
+        "Sheet6",
+        "Sheet5",
+        "Sheet4",
+        "Sheet3",
+        "Yearly Totals",
+        "Chart2"
+      ],
+      "chart_series": [
+        {
+          "part": "xl/charts/chart1.xml",
+          "cat_ref": "'Yearly Totals'!$A$4:$B$11"
+        },
+        {
+          "part": "xl/charts/chart1.xml",
+          "name_ref": "'Yearly Totals'!$C$3"
+        },
+        {
+          "part": "xl/charts/chart1.xml",
+          "val_ref": "'Yearly Totals'!$C$4:$C$11"
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "charts",
+      "pivot_tables",
+      "pivot_caches",
+      "merged_cells"
+    ],
+    "notes": "chart1.xml has exactly 1 series, entirely sourced from Sheet2: cat_ref 'Sheet2!$A$4:$B$11', name_ref 'Sheet2!$C$3', val_ref 'Sheet2!$C$4:$C$11' -- confirmed via inventory.py. This workbook has 0 defined names and 0 cross-sheet formulas (per corpus.json), so chart1's series refs are the ONLY textual references to 'Sheet2!' anywhere in the file, making this a clean, fully-assertable rename ripple. 'Sheet2' has no space so its refs are unquoted in the original; 'Yearly Totals' has a space so Excel must quote them, giving the expected post-rename refs 'Yearly Totals'!$A$4:$B$11 (cat_ref), 'Yearly Totals'!$C$3 (name_ref) and 'Yearly Totals'!$C$4:$C$11 (val_ref) -- none of which exist in the original file. We assert all three ref fields of the single series."
+  },
+  {
+    "id": "pension-t1-set-notionals-per-r1",
+    "workbook": "research/xlsx-bench/corpus/pension-hedging-stress-model.xlsx",
+    "tier": 1,
+    "kind": "value",
+    "prompt": "Set the recommended trade size to 1,500 rand per index point in the hedge results.",
+    "expect": {
+      "cells": [
+        {
+          "sheet": "HedgeResults",
+          "ref": "Q2",
+          "value": 1500.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Checks",
+          "ref": "B11",
+          "value": 1500.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Checks",
+          "ref": "B22",
+          "value": 1500.0,
+          "tol": 0.5
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "pivot_tables",
+      "pivot_caches",
+      "tables",
+      "conditional_formatting",
+      "data_validations",
+      "defined_names",
+      "comments",
+      "merged_cells"
+    ],
+    "notes": "HedgeResults is a 1-data-row table (A1:V2); column Q = 'NotionalsPerR1', currently blank (0 in SUM). Checks!B11 ('Recommended Trades') = SUM(HedgeResults[NotionalsPerR1])-'Hedge detail - Nominal'!$E$46-'Hedge detail - ILB'!$E$30; both of those Hedge-detail cells are themselves SUM formulas over currently-blank ranges, confirmed 0 via LibreOffice recalc of the original. Setting Q2=1500 makes B11 = 1500-0-0 = 1500. Checks!B22 ('Total error') = ROUND(SUM(B4:B21),2); every other row in B4:B21 is 0 in the original recalc, so B22 also becomes 1500."
+  },
+  {
+    "id": "pension-t2-total-required-bonds",
+    "workbook": "research/xlsx-bench/corpus/pension-hedging-stress-model.xlsx",
+    "tier": 2,
+    "kind": "formula_column",
+    "prompt": "On the per-scheme required-bonds table, add a column showing the total required bonds (CPI-linked plus nominal) for each scheme.",
+    "expect": {
+      "cells": [
+        {
+          "sheet": "PerSchemeRequiredBonds",
+          "ref": "H2",
+          "value": 0.0,
+          "tol": 0.01
+        }
+      ],
+      "formulas": [
+        {
+          "sheet": "PerSchemeRequiredBonds",
+          "ref": "H2",
+          "contains": "E2",
+          "contains_any": [
+            "E2",
+            "["
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "PerSchemeRequiredBonds",
+          "ref": "A1:H2"
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "pivot_tables",
+      "pivot_caches",
+      "tables",
+      "conditional_formatting",
+      "data_validations",
+      "defined_names",
+      "comments",
+      "merged_cells"
+    ],
+    "notes": "PerSchemeRequiredBonds (table8... table9, A1:G2) header row: Calculation_id, SchemeName, Liability, RequiredAssets, RequiredCPIBonds(E), RequiredNominalBonds(F), Cash. This is a template with a single placeholder data row where E2=0 and F2=0 (literal zeros, not blank -- confirmed). New column H ('TotalRequiredBonds') = E2+F2 = 0+0 = 0; table grows from A1:G2 to A1:H2. The value is trivially 0 because the template's only data row is unpopulated placeholder data -- this still exercises the table-structured formula-column mechanism correctly. | 2026-09-26: formula check accepts the table's structured references too (contains_any): inside an Excel Table, [@col]/[[#This Row],[col]] is a correct, arguably better way to write the formula."
+  },
+  {
+    "id": "pension-t4-insert-cpi-linked-asset-row",
+    "workbook": "research/xlsx-bench/corpus/pension-hedging-stress-model.xlsx",
+    "tier": 4,
+    "kind": "insert_row",
+    "prompt": "On the asset rands-per-point table, add a new row for a CPI-linked bond type, between the existing Nominal and Real rows.",
+    "expect": {
+      "text_cells": [
+        {
+          "sheet": "AssetRandsPerPoint",
+          "ref": "M2",
+          "value": "Nominal"
+        },
+        {
+          "sheet": "AssetRandsPerPoint",
+          "ref": "M3",
+          "value": "CPI-linked"
+        },
+        {
+          "sheet": "AssetRandsPerPoint",
+          "ref": "M4",
+          "value": "Real"
+        }
+      ],
+      "tables": [
+        {
+          "name": "AssetRandsPerPoint",
+          "ref": "A1:O4"
+        }
+      ],
+      "defined_names": {
+        "Query_from_SILPEN#localSheetId=10": "AssetRandsPerPoint!$A$1:$O$4"
+      },
+      "no_new_errors": true
+    },
+    "preserve": [
+      "pivot_tables",
+      "pivot_caches",
+      "tables",
+      "conditional_formatting",
+      "data_validations",
+      "defined_names",
+      "comments",
+      "merged_cells"
+    ],
+    "notes": "AssetRandsPerPoint (table6, A1:O3) has exactly 2 data rows: row2 BondType='Nominal', row3 BondType='Real' (column M; all other columns blank in both rows). Inserting a new row for 'CPI-linked' between them makes it the new row3, pushing 'Real' to row4; table grows A1:O3 -> A1:O4. The workbook-scoped defined name 'Query_from_SILPEN#localSheetId=10' = 'AssetRandsPerPoint!$A$1:$O$3' must grow to $A$1:$O$4 along with the table -- a genuine, checkable ripple even though the row content itself is mostly blank template placeholders."
+  },
+  {
+    "id": "pension-t5-rename-ilb-hedge-detail",
+    "workbook": "research/xlsx-bench/corpus/pension-hedging-stress-model.xlsx",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Rename the 'Hedge detail - ILB' tab to 'ILB Hedge Detail'.",
+    "expect": {
+      "sheet_names": [
+        "Input",
+        "Final liability",
+        "Liability Detail",
+        "LiabilityChanges",
+        "LiabilityOutput",
+        "SchemeIncreases",
+        "StressedLiabilityPivot",
+        "StressedLiabilities",
+        "BondsOverview",
+        "AssetsDetail",
+        "AssetRandsPerPoint",
+        "StressedAssetsPivot",
+        "StressedAssets",
+        "HedgeSummary",
+        "HedgeResults",
+        "PerSchemeRequiredBonds",
+        "Hedge detail - Nominal",
+        "ILB Hedge Detail",
+        "StressedHedgesPvt",
+        "StressedHedges",
+        "ShockedCurvePivot",
+        "GeneratedYieldCurveEntries",
+        "StressedYieldCurvePivot",
+        "StressedYieldCurvesFull",
+        "StressedYieldCurveEntries",
+        "HedgingBonds",
+        "Portfolios",
+        "Checks"
+      ],
+      "formulas": [
+        {
+          "sheet": "Checks",
+          "ref": "B6",
+          "contains": "'ILB Hedge Detail'!C83:K83"
+        },
+        {
+          "sheet": "Checks",
+          "ref": "B11",
+          "contains": "'ILB Hedge Detail'!$E$30"
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "pivot_tables",
+      "pivot_caches",
+      "tables",
+      "conditional_formatting",
+      "data_validations",
+      "defined_names",
+      "comments",
+      "merged_cells"
+    ],
+    "notes": "'Hedge detail - ILB' is referenced by name in exactly 5 Checks formulas (B6, B8 [array], B9, B10, B11 -- the ILB-side sibling of the t3-substitute task's Nominal rename). We spot-check 2 of the 5 (B6's plain SUM/IFERROR and B11's mixed formula). No defined name references either 'Hedge detail' sheet by name (only Input!/AssetRandsPerPoint!/etc. cells are targets of defined names), so Checks' 5 formulas are the complete ripple for each rename."
+  },
+  {
+    "id": "sparkext-t1-fix-factor",
+    "workbook": "research/xlsx-bench/corpus/sparkline-external-reference.xlsx",
+    "tier": 1,
+    "kind": "value",
+    "prompt": "The calculated factor for record 51064 on Sheet2 (column L) should be 0.0001, not the tiny number currently there — please fix it.",
+    "expect": {
+      "cells": [
+        {
+          "sheet": "Sheet2",
+          "ref": "L1",
+          "value": 0.0001,
+          "tol": 1e-08
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "A2",
+          "value": 0.0001,
+          "tol": 1e-08
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "data_validations",
+      "defined_names",
+      "sparklines",
+      "external_links"
+    ],
+    "notes": "Sheet2!L1 = 1.865463778313135e-05 originally. Sheet1!A2 = VLOOKUP(TEXT(B2,0),Sheet2!A:L,12,FALSE); B2=51064 (text-matches Sheet2!A1='51064'), column 12 of A:L is L, so A2 mirrors L1 exactly. Changing L1 to 0.0001 makes A2 = 0.0001 too. We deliberately edit L1 (not B2, the lookup key) because Sheet2 has only one row (A1='51064'); changing the lookup key without adding a matching row would break the VLOOKUP into #N/A, which is a real ambiguity trap this task avoids."
+  },
+  {
+    "id": "sparkext-t2-days-between-column",
+    "workbook": "research/xlsx-bench/corpus/sparkline-external-reference.xlsx",
+    "tier": 2,
+    "kind": "formula_column",
+    "prompt": "On Sheet2, add a column showing the number of days between the two dates in the row.",
+    "expect": {
+      "no_new_errors": true,
+      "column_values": [
+        {
+          "sheet": "Sheet2",
+          "any_of": [
+            {
+              "1": 50.0
+            },
+            {
+              "1": 364.0
+            },
+            {
+              "1": 414.0
+            }
+          ],
+          "abs": true,
+          "tol": 0.5,
+          "label": "new column on Sheet2"
+        }
+      ]
+    },
+    "preserve": [
+      "data_validations",
+      "defined_names",
+      "sparklines",
+      "external_links"
+    ],
+    "notes": "Sheet2!G1=2021-05-11, H1=2021-06-30 (the only populated date pair in the sheet's single data row). New column M ('Days Between') = H1-G1 = 50 days. Column M sits well to the left of the sparkline at EP1 (column 146), so it doesn't disturb it. | 2026-09-26: converted to a position-independent column_values check. The prompt never says which column to use, and in the first recorded run Claude reasonably put the benefits column at EA (to keep the workbook's macros, which read fixed column positions, intact). Where the column goes is the editor's call; the values are the task. The formula-contains check was dropped with the fixed position. | 2026-09-26 (full run, both arms): Sheet2's row holds FOUR date cells (G1 2021-05-11, H1 2021-06-30, I1 = J1 2022-06-29), so 'the two dates in the row' is ambiguous. Both arms independently used I1-H1 = 364. Any pair of the distinct dates passes (50, 364 or 414 days), sign-insensitive."
+  },
+  {
+    "id": "sparkext-t4sub-rename-sheet2",
+    "workbook": "research/xlsx-bench/corpus/sparkline-external-reference.xlsx",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Rename the 'Sheet2' tab to 'Lookup Data'.",
+    "expect": {
+      "sheet_names": [
+        "Sheet1",
+        "Lookup Data"
+      ],
+      "formulas": [
+        {
+          "sheet": "Sheet1",
+          "ref": "A2",
+          "contains": "'Lookup Data'!A:L"
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "data_validations",
+      "defined_names",
+      "sparklines",
+      "external_links"
+    ],
+    "notes": "SUBSTITUTION for tier4: with only 1 data row on each of the 2 sheets, there is no range with 2+ rows anywhere in this workbook to insert a new row into the middle of (see also the t3 substitution above). Substituted with this second tier5 sheet_op. Sheet1!A2 = VLOOKUP(TEXT(B2,0),Sheet2!A:L,12,FALSE); renaming 'Sheet2' (no space, unquoted) to 'Lookup Data' (has a space) means the formula must become VLOOKUP(TEXT(B2,0),'Lookup Data'!A:L,12,FALSE). The sparkline's source formula ('[1]Contract Tail YLT'!B46:E46) points at an external workbook, not at Sheet2, so it is untouched by this rename."
+  },
+  {
+    "id": "sparkext-t5-add-lookup-check-sheet",
+    "workbook": "research/xlsx-bench/corpus/sparkline-external-reference.xlsx",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Add a new sheet called 'Lookup Check' that shows the matched factor value for record 51064, pulled from Sheet2.",
+    "expect": {
+      "sheet_names": [
+        "Sheet1",
+        "Sheet2",
+        "Lookup Check"
+      ],
+      "no_new_errors": true,
+      "sheet_contains": [
+        {
+          "sheet": "Lookup Check",
+          "values": [
+            {
+              "value": 1.865463778313135e-05,
+              "tol": 1e-08,
+              "formula_contains": "Sheet2"
+            }
+          ]
+        }
+      ]
+    },
+    "preserve": [
+      "data_validations",
+      "defined_names",
+      "sparklines",
+      "external_links"
+    ],
+    "notes": "New 'Lookup Check' sheet appended at the end. B1 = Sheet2!L1 = 1.865463778313135e-05 (the pristine original value; unrelated to the t1 task above, which starts from its own fresh copy). This exercises the tier5 'add a summary sheet with cross-sheet formulas' shape as a genuinely distinct task from the two rename substitutions above. | 2026-09-26: converted to a position-independent sheet_contains check. The prompt never says which cells to use, and in the first recorded runs both arms built correct summary sheets with a header row, putting the values in B4-B6 rather than B1-B2. Each value must appear somewhere on the new sheet, as a live formula containing the original check's text where one was given."
+  },
+  {
+    "id": "kyc-t1sub-rename-occupation",
+    "workbook": "research/xlsx-bench/corpus/kyc-intake-data-dictionary.xlsx",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Rename the 'Occupation' tab to 'Occupation Codes'.",
+    "expect": {
+      "sheet_names": [
+        "KYC HEADER",
+        "KYC",
+        "ADDL INFO",
+        "KYC TRAILER",
+        "KYC Update Type",
+        "Addtl KYC Update Type",
+        "Entity Type",
+        "Document & EXEMPTED &  PAN COPY",
+        "IPV Status",
+        "Identity Proof",
+        "Address Proof",
+        "Gender",
+        "Marital Status",
+        "Exempt Category",
+        "Company Type",
+        "Nationality",
+        "Residential Status",
+        "NRI Residential Status Proof",
+        "Occupation Codes",
+        "Income Slab",
+        "PEP Status",
+        "KYC Status",
+        "Rejection Reasons",
+        "Relationship Status",
+        "Document submission Details",
+        "State Master",
+        "Country Master",
+        "Country Master (2)",
+        "Dump Type",
+        "KYC_MODE"
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "defined_names",
+      "protection",
+      "merged_cells",
+      "hyperlinks"
+    ],
+    "notes": "SUBSTITUTION for tier1: this is a pure code-lookup dictionary (30 sheets of Code/Description pairs); grepping every worksheet XML part for <f> elements finds zero formulas anywhere in the workbook, so tier1's 'change an input that feeds formulas, totals must move' has no live formula to move. Substituted with this tier5 sheet_op. The protected 'KYC' sheet has one internal hyperlink (B62) whose target text is 'Occupation!A1'; renaming 'Occupation' (no space) to 'Occupation Codes' (has a space) means that target should become 'Occupation Codes'!A1. This is a structural rename, not an edit to any locked cell on the protected KYC sheet -- Excel permits renaming/reordering sheets without unprotecting them (no workbook-structure-lock is set here), and the hyperlink-target update is an automatic side effect, not a direct edit. Per the current TASK_SCHEMA there is no 'hyperlinks' key in `expect`, so this ripple is not independently assertable here -- noted as a schema gap in tasks_notes.md."
+  },
+  {
+    "id": "kyc-t2-numeric-error-code-column",
+    "workbook": "research/xlsx-bench/corpus/kyc-intake-data-dictionary.xlsx",
+    "tier": 2,
+    "kind": "formula_column",
+    "prompt": "On the Rejection Reasons list, add a column that pulls out just the numeric part of each error code, so the list can be sorted numerically.",
+    "expect": {
+      "no_new_errors": true,
+      "column_values": [
+        {
+          "sheet": "Rejection Reasons",
+          "rows": {
+            "2": 0.0,
+            "132": 99999.0
+          },
+          "tol": 0.5,
+          "label": "new column on Rejection Reasons"
+        }
+      ]
+    },
+    "preserve": [
+      "defined_names",
+      "protection",
+      "merged_cells",
+      "hyperlinks"
+    ],
+    "notes": "Rejection Reasons!A2:A132 (131 rows) are all 'ERR-#####' codes (verified: every one matches ^ERR-\\d{5}$ exactly, no exceptions) but are NOT sequential -- they run ERR-00000..ERR-00019... up through ERR-99999, with real gaps. New column C ('Numeric Code') = VALUE(RIGHT(A,5)) per row: C2 = VALUE(RIGHT('ERR-00000',5)) = 0; C132 = VALUE(RIGHT('ERR-99999',5)) = 99999. This sheet has no existing formulas or Excel Table object, so it's a plain new column, not a table growth. | 2026-09-26: converted to a position-independent column_values check. The prompt never says which column to use, and in the first recorded run Claude reasonably put the benefits column at EA (to keep the workbook's macros, which read fixed column positions, intact). Where the column goes is the editor's call; the values are the task. The formula-contains check was dropped with the fixed position."
+  },
+  {
+    "id": "kyc-t3sub-insert-update-type-code",
+    "workbook": "research/xlsx-bench/corpus/kyc-intake-data-dictionary.xlsx",
+    "tier": 4,
+    "kind": "insert_row",
+    "prompt": "Add a new update-type code to the KYC Update Type list: code 08, 'Re-KYC'. It goes right after code 07 (Old KYC Record) and before code 11 (Old KYC Record Modification).",
+    "expect": {
+      "text_cells": [
+        {
+          "sheet": "KYC Update Type",
+          "ref": "A8",
+          "value": "07"
+        },
+        {
+          "sheet": "KYC Update Type",
+          "ref": "B8",
+          "value": "Old KYC Record"
+        },
+        {
+          "sheet": "KYC Update Type",
+          "ref": "A9",
+          "value": "08"
+        },
+        {
+          "sheet": "KYC Update Type",
+          "ref": "B9",
+          "value": "Re-KYC"
+        },
+        {
+          "sheet": "KYC Update Type",
+          "ref": "A10",
+          "value": "11"
+        },
+        {
+          "sheet": "KYC Update Type",
+          "ref": "B10",
+          "value": "Old KYC Record Modification"
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "defined_names",
+      "protection",
+      "merged_cells",
+      "hyperlinks"
+    ],
+    "notes": "SUBSTITUTION for tier3: this is a pure code dictionary with no numeric quantities anywhere to scale by a percentage (codes are ID-like strings, not amounts), so tier3 doesn't fit. Substituted with this second tier4 insert_row (on a different sheet from the native tier4 task below, for variety). KYC Update Type's codes already skip from 07 straight to 11 in the original (rows 8-9: '07' Old KYC Record, '11' Old KYC Record Modification) -- inserting '08'/'Re-KYC' between them uses that real gap. New row9='08'/'Re-KYC'; old row9 ('11'/'Old KYC Record Modification') shifts to row10. The protected 'KYC' sheet hyperlinks to this list at a fixed 'KYC Update Type'!A1 (not a specific row), so it is unaffected by the insert either way."
+  },
+  {
+    "id": "kyc-t4-insert-ladakh-state",
+    "workbook": "research/xlsx-bench/corpus/kyc-intake-data-dictionary.xlsx",
+    "tier": 4,
+    "kind": "insert_row",
+    "prompt": "Add Ladakh to the state list, right after Jammu and Kashmir, with code 038.",
+    "expect": {
+      "text_cells": [
+        {
+          "sheet": "State Master",
+          "ref": "B2",
+          "value": "Jammu and Kashmir"
+        },
+        {
+          "sheet": "State Master",
+          "ref": "A3",
+          "value": "038"
+        },
+        {
+          "sheet": "State Master",
+          "ref": "B3",
+          "value": "Ladakh"
+        },
+        {
+          "sheet": "State Master",
+          "ref": "B4",
+          "value": "Himachal Pradesh"
+        },
+        {
+          "sheet": "State Master",
+          "ref": "B39",
+          "value": "Telangana"
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "defined_names",
+      "protection",
+      "merged_cells",
+      "hyperlinks"
+    ],
+    "notes": "State Master lists 37 states/UTs, codes '001'..'037' in ascending row order (row2='001' Jammu and Kashmir ... row38='037' Telangana). Ladakh was a real 2019 split from Jammu and Kashmir, so inserting it right after J&K is authentic; it's given code '038' (the next available code, fully specified in the prompt to avoid any ambiguity about numbering) even though it's placed mid-list rather than appended, which is realistic for a hand-maintained reference list. New row3 = '038'/'Ladakh'; Himachal Pradesh (was row3) shifts to row4, ... Telangana (was row38) shifts to row39. The 'A' column is a text code (values like '001' with leading zeros), so C2/A2 is asserted as a string, not a number. State Master isn't an Excel Table, so there's no table ref to grow, but two of its hyperlink targets ('KYC'!B33 and B56, both 'State Master'!A1) point at a fixed A1 and so are unaffected by the row shift."
+  },
+  {
+    "id": "kyc-t5-rename-country-master",
+    "workbook": "research/xlsx-bench/corpus/kyc-intake-data-dictionary.xlsx",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Rename the 'Country Master' tab to 'Country Codes'.",
+    "expect": {
+      "sheet_names": [
+        "KYC HEADER",
+        "KYC",
+        "ADDL INFO",
+        "KYC TRAILER",
+        "KYC Update Type",
+        "Addtl KYC Update Type",
+        "Entity Type",
+        "Document & EXEMPTED &  PAN COPY",
+        "IPV Status",
+        "Identity Proof",
+        "Address Proof",
+        "Gender",
+        "Marital Status",
+        "Exempt Category",
+        "Company Type",
+        "Nationality",
+        "Residential Status",
+        "NRI Residential Status Proof",
+        "Occupation",
+        "Income Slab",
+        "PEP Status",
+        "KYC Status",
+        "Rejection Reasons",
+        "Relationship Status",
+        "Document submission Details",
+        "State Master",
+        "Country Codes",
+        "Country Master (2)",
+        "Dump Type",
+        "KYC_MODE"
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "defined_names",
+      "protection",
+      "merged_cells",
+      "hyperlinks"
+    ],
+    "notes": "'Country Master' is the target of 3 internal hyperlinks, all on the protected 'KYC' sheet (B22, B34, B57 -> \"'Country Master'!A1\"), the richest rename ripple of any sheet in this workbook. As with the t1-substitute Occupation rename, this is a structural sheet rename (not a protected-cell edit -- no workbook-structure lock is set) and the hyperlink-target text isn't independently assertable under the current TASK_SCHEMA (no 'hyperlinks' expect key), so this task's checkable ripple is sheet_names plus general validity; the hyperlink-identity check falls to the generic 'hyperlinks' preserve class (which only verifies the count of 35 stays the same), a known schema gap noted here and in tasks_notes.md."
+  },
+  {
+    "id": "parking-t1sub-add-pilot-kpis-sheet",
+    "workbook": "research/xlsx-bench/corpus/parking-study-report.xlsm",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Add a new sheet called 'Pilot KPIs' showing the answer rate (calls handled divided by calls received) from the pilot activity summary.",
+    "expect": {
+      "sheet_names": [
+        "CCSInfo",
+        "General",
+        "Detailed_report",
+        "Summary_report",
+        "Detailed_graph",
+        "Summary_graph",
+        "Tabelle1",
+        "Tabelle2",
+        "Tabelle3",
+        "Pilot KPIs"
+      ],
+      "no_new_errors": true,
+      "sheet_contains": [
+        {
+          "sheet": "Pilot KPIs",
+          "values": [
+            {
+              "value": 1.0,
+              "tol": 0.001,
+              "formula_contains": "Summary_report"
+            }
+          ]
+        }
+      ]
+    },
+    "preserve": [
+      "vba",
+      "charts",
+      "defined_names",
+      "images",
+      "comments",
+      "protection",
+      "merged_cells"
+    ],
+    "notes": "SUBSTITUTION for tier1 (no live protected-cell edit possible -- see workbook-level note). All 6 content-bearing sheets in this workbook (CCSInfo, General, Detailed_report, Summary_report, Detailed_graph, Summary_graph) carry per-sheet protection with only a legacy 4-hex-digit password hash ('EBF6') -- there is no way to recover the original plaintext password, and the task brief requires skipping any protected-sheet task where the password isn't known. The only unprotected sheets (Tabelle1/2/3) are empty leftover defaults with zero cells of data. That rules out every value/formula-column/bulk/insert-row task that would need to edit real data, since all the real data lives on protected sheets. What Excel DOES allow without unprotecting: renaming a sheet (governed by workbook-structure protection, which this file does not set) and reading protected sheets' cells from formulas on a new, unprotected sheet (protection blocks editing, not being read). So all 5 tasks here are sheet_op tasks that rename a sheet or add a new sheet of read-only cross-sheet formulas -- never touching a locked cell's content. Summary_report row8 (the only pilot with logged data on the report date) has C8=4 (received), D8=4 (handled); B1 = Summary_report!D8/Summary_report!C8 = 4/4 = 1.0000 (100%, since every received call was handled that day). | 2026-09-26: converted to a position-independent sheet_contains check. The prompt never says which cells to use, and in the first recorded runs both arms built correct summary sheets with a header row, putting the values in B4-B6 rather than B1-B2. Each value must appear somewhere on the new sheet, as a live formula containing the original check's text where one was given."
+  },
+  {
+    "id": "parking-t2sub-add-qa-notes-sheet",
+    "workbook": "research/xlsx-bench/corpus/parking-study-report.xlsm",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Add a new sheet called 'QA Notes' listing the total calls received, total calls handled, and total abandons from the pilot activity report.",
+    "expect": {
+      "sheet_names": [
+        "CCSInfo",
+        "General",
+        "Detailed_report",
+        "Summary_report",
+        "Detailed_graph",
+        "Summary_graph",
+        "Tabelle1",
+        "Tabelle2",
+        "Tabelle3",
+        "QA Notes"
+      ],
+      "no_new_errors": true,
+      "sheet_contains": [
+        {
+          "sheet": "QA Notes",
+          "values": [
+            {
+              "value": 4.0,
+              "tol": 0.5,
+              "formula_contains": "Summary_report"
+            },
+            {
+              "value": 4.0,
+              "tol": 0.5
+            },
+            {
+              "value": 0.0,
+              "tol": 0.5,
+              "formula_contains": [
+                "Detailed_report",
+                "Summary_report"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "preserve": [
+      "vba",
+      "charts",
+      "defined_names",
+      "images",
+      "comments",
+      "protection",
+      "merged_cells"
+    ],
+    "notes": "SUBSTITUTION for tier2 (no unprotected table exists to add a calculated column to). All 6 content-bearing sheets in this workbook (CCSInfo, General, Detailed_report, Summary_report, Detailed_graph, Summary_graph) carry per-sheet protection with only a legacy 4-hex-digit password hash ('EBF6') -- there is no way to recover the original plaintext password, and the task brief requires skipping any protected-sheet task where the password isn't known. The only unprotected sheets (Tabelle1/2/3) are empty leftover defaults with zero cells of data. That rules out every value/formula-column/bulk/insert-row task that would need to edit real data, since all the real data lives on protected sheets. What Excel DOES allow without unprotecting: renaming a sheet (governed by workbook-structure protection, which this file does not set) and reading protected sheets' cells from formulas on a new, unprotected sheet (protection blocks editing, not being read). So all 5 tasks here are sheet_op tasks that rename a sheet or add a new sheet of read-only cross-sheet formulas -- never touching a locked cell's content. B1=Summary_report!C8=4 (received), B2=Summary_report!D8=4 (handled), B3=Detailed_report!S8=0 (abandons -- Detailed_report!S8 is the first data row under the 'Abbrüche (gesamt)' header at S7, and is 0 in the recalculated original, same as every other detail metric column for this report date). | 2026-09-26: converted to a position-independent sheet_contains check. The prompt never says which cells to use, and in the first recorded runs both arms built correct summary sheets with a header row, putting the values in B4-B6 rather than B1-B2. Each value must appear somewhere on the new sheet, as a live formula containing the original check's text where one was given. | 2026-09-26 (full run, both arms): both took total abandons from Summary_report!E33, the 'Summe' (total) row under 'Abbrüche (gesamt)' (= 0), rather than Detailed_report!S8, the first data row. For 'total abandons' the Summe row is the better reading; either source passes."
+  },
+  {
+    "id": "parking-t5-rename-detailed-report",
+    "workbook": "research/xlsx-bench/corpus/parking-study-report.xlsm",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Rename the 'Detailed_report' tab to 'Detail Report'.",
+    "expect": {
+      "sheet_names": [
+        "CCSInfo",
+        "General",
+        "Detail Report",
+        "Summary_report",
+        "Detailed_graph",
+        "Summary_graph",
+        "Tabelle1",
+        "Tabelle2",
+        "Tabelle3"
+      ],
+      "chart_series": [
+        {
+          "part": "xl/charts/chart1.xml",
+          "cat_ref": "CCSInfo!$W$1:$W$30"
+        },
+        {
+          "part": "xl/charts/chart1.xml",
+          "val_ref": "'Detail Report'!$I$8:$I$37"
+        }
+      ],
+      "defined_names": {
+        "Ab_apr_60s_Cpt_FormPil": "'Detail Report'!$Z$6",
+        "Abandons_Cpt_FormPil": "'Detail Report'!$S$7"
+      },
+      "no_new_errors": true
+    },
+    "preserve": [
+      "vba",
+      "charts",
+      "defined_names",
+      "images",
+      "comments",
+      "protection",
+      "merged_cells"
+    ],
+    "notes": "chart1.xml's 5 series are all sourced from Detailed_report ($I$8:$I$37, $AC$8:$AC$37, $AB$8:$AB$37, $AA$8:$AA$37, $S$8:$S$37), except the shared category axis which points at CCSInfo (untouched by this rename, asserted here to prove the tool doesn't over-rewrite unrelated refs). Renaming to 'Detail Report' (space, needs quoting) means the expected post-rename val_ref for the first series is 'Detail Report'!$I$8:$I$37 -- which does not exist in the original file (the original is the unquoted 'Detailed_report!$I$8:$I$37'). 62 of the workbook's 213 defined names also anchor to Detailed_report; we spot-check 2. This is the richest fully-assertable rename ripple in the workbook (chart_series is a genuine TASK_SCHEMA expect key, unlike the hyperlink/pivot gaps noted elsewhere), so it's kept as the workbook's native (non-substituted) tier5 task."
+  }
+]

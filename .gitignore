@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.opensource-verify-report.json
+
+# third-party workbooks downloaded by research/xlsx-bench/fetch_corpus.py
+research/xlsx-bench/corpus/
+research/safexl-moat/fixtures/DataValidations-49244.xlsx
+research/safexl-moat/fixtures/ExcelPivotTableSample.xlsx
+research/safexl-moat/fixtures/NewStyleConditionalFormattings.xlsx
+research/safexl-moat/fixtures/SimpleMacro.xlsm
+research/safexl-moat/fixtures/WithChart.xlsx
+research/safexl-moat/fixtures/WithDrawing.xlsx
+
+# written by research/xlsx-bench/runner.py for arm B runs
+research/xlsx-bench/.arm_b_env.sh

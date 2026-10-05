@@ -1,0 +1,47 @@
+{
+  "task_id": "sparkext-t5-add-lookup-check-sheet",
+  "arm": "B",
+  "rep": 3,
+  "workbook": "research/xlsx-bench/corpus/sparkline-external-reference.xlsx",
+  "prompt": "Add a new sheet called 'Lookup Check' that shows the matched factor value for record 51064, pulled from Sheet2.",
+  "model": "openai/gpt-oss-120b",
+  "provider": "openrouter-paid",
+  "started_at": "2026-10-04T06:13:44Z",
+  "output_files": [],
+  "contamination": {
+    "contaminated": false,
+    "evidence": []
+  },
+  "timed_out": false,
+  "tool_calls": [
+    {
+      "name": "safexl_inspect",
+      "error": false,
+      "kind": null,
+      "args": "{\n  \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/sparkext-t5-add-lookup-check-sheet/B/3/work/sparkline-external-reference.xlsx\"\n}",
+      "result": "{\"ok\": true, \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/sparkext-t5-add-lookup-check-sheet/B/3/work/sparkline-external-reference.xlsx\", \"sheets\": [{\"name\": \"Sheet1\", \"sheet_id\": \"4\", \"declared_dimension\": \"A1:B2\", \"actual_used_range\": \"A1:B2\", \"dimension_matches\": true, \"formula_count\": 1, \"data_validation_native\": 2, \"data_validation_extlst\": 0, \"conditional_formatting_native\": 0, \"conditional_formatting_extlst\": 0}, {\"name\": \"Sheet2\", \"sheet_id\": \"5\", \"declared_dimension\": \"A1:ET1\", \"actual_used_range\": \"A1:ET1\", \"dimen"
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\n  \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/sparkext-t5-add-lookup-check-sheet/B/3/work/sparkline-external-reference.xlsx\",\n  \"sheet\": \"Sheet2\",\n  \"cell_range\": \"A1:ET1\",\n  \"max_cells\": 200\n}",
+      "result": "{\"ok\": true, \"sheets\": [\"Sheet1\", \"Sheet2\"], \"sheet\": \"Sheet2\", \"dims\": \"A1:ET1\", \"cells\": [{\"ref\": \"A1\", \"type\": \"s\", \"value\": \"51064\"}, {\"ref\": \"B1\", \"type\": \"s\", \"value\": \"a\"}, {\"ref\": \"C1\", \"type\": \"s\", \"value\": \"b\"}, {\"ref\": \"D1\", \"type\": \"s\", \"value\": \"c\"}, {\"ref\": \"E1\", \"type\": \"s\", \"value\": \"d\"}, {\"ref\": \"F1\", \"type\": \"n\", \"value\": 42.0439}, {\"ref\": \"G1\", \"type\": \"n\", \"value\": 44327}, {\"ref\": \"H1\", \"type\": \"n\", \"value\": 44377}, {\"ref\": \"I1\", \"type\": \"n\", \"value\": 44741}, {\"ref\": \"J1\", \"type\": \"n\", \"value\": 44741}, {\"ref\": \"L1\", \"type\": \"n\", \"value\": 1.865463778313135e-05}, {\"ref\": \"M1\""
+    }
+  ],
+  "api_retries": [],
+  "tokens_in": 16443,
+  "tokens_out": 605,
+  "steps": 3,
+  "first_tool_call_s": 5.29,
+  "final_text": "",
+  "stop_reason": "empty_reply",
+  "cost_usd": 0.000711241,
+  "providers": [
+    "DeepInfra"
+  ],
+  "wall_seconds": 16.13,
+  "finished_at": "2026-10-04T06:14:00Z",
+  "tool_call_count": 2,
+  "tool_error_count": 0
+}

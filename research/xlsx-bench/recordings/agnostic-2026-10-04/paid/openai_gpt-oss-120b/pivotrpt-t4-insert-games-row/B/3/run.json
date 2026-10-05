@@ -1,0 +1,47 @@
+{
+  "task_id": "pivotrpt-t4-insert-games-row",
+  "arm": "B",
+  "rep": 3,
+  "workbook": "research/xlsx-bench/corpus/pivot-chart-report.xlsx",
+  "prompt": "Add a new row to the raw data sheet for a Games category in 2006: cost 450000, revenue 612000. Put it right after the 2006 Electronics row.",
+  "model": "openai/gpt-oss-120b",
+  "provider": "openrouter-paid",
+  "started_at": "2026-10-04T06:12:17Z",
+  "output_files": [],
+  "contamination": {
+    "contaminated": false,
+    "evidence": []
+  },
+  "timed_out": false,
+  "tool_calls": [
+    {
+      "name": "safexl_inspect",
+      "error": false,
+      "kind": null,
+      "args": "{\n  \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\"\n}",
+      "result": "{\"ok\": true, \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\", \"sheets\": [{\"name\": \"Sheet1\", \"sheet_id\": \"1\", \"declared_dimension\": \"A1:F13\", \"actual_used_range\": \"A1:F13\", \"dimension_matches\": true, \"formula_count\": 0, \"data_validation_native\": 0, \"data_validation_extlst\": 0, \"conditional_formatting_native\": 0, \"conditional_formatting_extlst\": 0}, {\"name\": \"Sheet6\", \"sheet_id\": \"6\", \"declared_dimension\": \"A3:G9\", \"actual_used_range\": \"A3:G9\", \"dimension_matches\": t"
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\n  \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\",\n  \"sheet\": \"Sheet4\",\n  \"cell_range\": \"A1:C30\"\n}",
+      "result": "{\"ok\": true, \"sheets\": [\"Sheet1\", \"Sheet6\", \"Sheet5\", \"Sheet4\", \"Sheet3\", \"Sheet2\", \"Chart2\"], \"sheet\": \"Sheet4\", \"dims\": \"A3:C21\", \"cells\": [{\"ref\": \"B3\", \"type\": \"s\", \"value\": \"Values\"}, {\"ref\": \"A4\", \"type\": \"s\", \"value\": \"Row Labels\"}, {\"ref\": \"B4\", \"type\": \"s\", \"value\": \"Sum of Cost\"}, {\"ref\": \"C4\", \"type\": \"s\", \"value\": \"Sum of Revenue\"}, {\"ref\": \"A5\", \"type\": \"s\", \"value\": \"Books\"}, {\"ref\": \"B5\", \"type\": \"n\", \"value\": 3133539}, {\"ref\": \"C5\", \"type\": \"n\", \"value\": 4024235}, {\"ref\": \"A6\", \"type\": \"n\", \"value\": 2005}, {\"ref\": \"B6\", \"type\": \"n\", \"value\": 889017}, {\"ref\": \"C6\", \"type\": \"n\", "
+    }
+  ],
+  "api_retries": [],
+  "tokens_in": 16137,
+  "tokens_out": 1405,
+  "steps": 3,
+  "first_tool_call_s": 2.79,
+  "final_text": "",
+  "stop_reason": "empty_reply",
+  "cost_usd": 0.0008359190000000001,
+  "providers": [
+    "DeepInfra"
+  ],
+  "wall_seconds": 30.3,
+  "finished_at": "2026-10-04T06:12:47Z",
+  "tool_call_count": 2,
+  "tool_error_count": 0
+}

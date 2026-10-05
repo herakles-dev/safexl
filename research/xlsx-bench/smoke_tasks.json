@@ -1,0 +1,12 @@
+[
+  {
+    "id": "simplemacro",
+    "workbook": "research/safexl-moat/fixtures/SimpleMacro.xlsm",
+    "prompt": "Here's one of our workbooks, SimpleMacro.xlsm. On the first sheet, add a column to the right of the existing data with the header \"Reviewed\" and put \"yes\" in the first data row. Keep everything else the same and save the result as SimpleMacro-updated.xlsm in this folder."
+  },
+  {
+    "id": "withdrawing",
+    "workbook": "research/safexl-moat/fixtures/WithDrawing.xlsx",
+    "prompt": "Here's one of our workbooks, WithDrawing.xlsx. On the first sheet, add a column to the right of the existing data with the header \"Reviewed\" and put \"yes\" in the first data row. Keep everything else the same and save the result as WithDrawing-updated.xlsx in this folder."
+  }
+]

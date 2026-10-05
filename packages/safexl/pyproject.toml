@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "safexl-mcp"
+version = "0.2.0"
+description = "Edit Excel workbooks in headless environments without breaking them (direct-XML-injection engine)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Herakles Dev" },
+]
+keywords = ["mcp", "model-context-protocol", "excel", "xlsx", "xlsm", "spreadsheet", "ooxml", "agents"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Financial :: Spreadsheet",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+# The engine, inspect, diff and validate modules are stdlib-only: they read and
+# write OOXML via zipfile + xml.etree, which is exactly why they can
+# byte-preserve every untouched zip part -- no third-party XML rebuild step to
+# lose fidelity. `inspect` reports vbaProject.bin presence/size without
+# oletools, and offers a deeper macro-keyword scan only with the optional
+# `scan` extra below.
+#
+# The one runtime dependency is the official MCP Python SDK, used only by
+# safexl_mcp/server.py (the `safexl-mcp` server). 2.2.0 is the version the
+# server was built and smoke-tested against (scripts/smoke_safexl_mcp.sh);
+# the <3 cap is there because the SDK's 1.x -> 2.x jump renamed FastMCP to
+# MCPServer and a future major may break the server API the same way.
+dependencies = ["mcp>=2.2.0,<3"]
+
+[project.optional-dependencies]
+# olevba (static analysis only -- never executes VBA) for safexl_mcp.inspect's
+# macro scan: AutoOpen/Auto_Open/Workbook_Open, Shell, CreateObject,
+# URLDownloadToFile, WScript, PowerShell keyword detection in vbaProject.bin.
+scan = ["oletools>=0.60"]
+# What the test suite imports beyond the package itself (openpyxl plays the
+# "other library that re-saves the workbook").
+test = ["pytest", "pytest-cov", "openpyxl>=3.1"]
+
+[project.urls]
+Homepage = "https://github.com/herakles-dev/safexl"
+Repository = "https://github.com/herakles-dev/safexl"
+Issues = "https://github.com/herakles-dev/safexl/issues"
+
+[project.scripts]
+safexl = "safexl_mcp.cli:main"
+safexl-mcp = "safexl_mcp.server:main"
+
+[tool.setuptools.packages.find]
+include = ["safexl_mcp*"]

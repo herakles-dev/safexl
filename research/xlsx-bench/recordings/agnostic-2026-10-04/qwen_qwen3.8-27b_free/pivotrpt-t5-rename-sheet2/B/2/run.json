@@ -1,0 +1,29 @@
+{
+  "task_id": "pivotrpt-t5-rename-sheet2",
+  "arm": "B",
+  "rep": 2,
+  "workbook": "research/xlsx-bench/corpus/pivot-chart-report.xlsx",
+  "prompt": "Rename the 'Sheet2' tab (the yearly cost/revenue totals) to 'Yearly Totals'.",
+  "model": "qwen/qwen3.8-27b:free",
+  "provider": "openrouter",
+  "started_at": "2026-10-04T05:58:52Z",
+  "output_files": [],
+  "contamination": {
+    "contaminated": false,
+    "evidence": []
+  },
+  "timed_out": false,
+  "tool_calls": [],
+  "api_retries": [],
+  "tokens_in": 0,
+  "tokens_out": 0,
+  "steps": 0,
+  "first_tool_call_s": null,
+  "final_text": "",
+  "stop_reason": "api_failure",
+  "api_error": "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}",
+  "wall_seconds": 106.63,
+  "finished_at": "2026-10-04T06:00:39Z",
+  "tool_call_count": 0,
+  "tool_error_count": 0
+}

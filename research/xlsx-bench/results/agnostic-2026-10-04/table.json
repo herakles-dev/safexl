@@ -1,0 +1,529 @@
+{
+  "task_set": "tasks_hard8.json minus one excluded task (7 tasks, up to 3 reps)",
+  "full_n": 21,
+  "excluded_task": {
+    "task_id": "benefits-t4-insert-duplicate-exclusion",
+    "reason": "the system prompt held this task's own rows and total formula as a usage example"
+  },
+  "definitions": {
+    "pass": "grade.py: correct and preserved and valid",
+    "intact": "grade.py 'preserved': no losses against the original workbook"
+  },
+  "models": [
+    {
+      "model": "deepseek/deepseek-v4-flash",
+      "tier": "paid",
+      "n_graded": 21,
+      "partial": false,
+      "pass": 21,
+      "intact": 21,
+      "correct": 21,
+      "valid": 21,
+      "median_wall_s": 28.6,
+      "cost_runs_recorded": 21,
+      "cost_per_run_usd": 0.01096,
+      "cost_total_usd": 0.2302,
+      "stop_reasons": {
+        "finished": 21
+      },
+      "tool_calls": 231,
+      "tool_errors": 0,
+      "tasks_covered": 7,
+      "reps_per_task": {
+        "kyc-t4-insert-ladakh-state": 3,
+        "parking-t5-rename-detailed-report": 3,
+        "pension-t4-insert-cpi-linked-asset-row": 3,
+        "pivotrpt-t4-insert-games-row": 3,
+        "pivotrpt-t5-rename-sheet2": 3,
+        "sparkext-t5-add-lookup-check-sheet": 3,
+        "structrefs-t4-add-guam-to-dropdowns": 3
+      },
+      "runs_without_run_json": [],
+      "failed_tasks": [],
+      "all8": {
+        "n_graded": 24,
+        "pass": 24,
+        "intact": 24
+      },
+      "excluded_task": {
+        "task_id": "benefits-t4-insert-duplicate-exclusion",
+        "n": 3,
+        "pass": 3
+      }
+    },
+    {
+      "model": "qwen/qwen3.8-27b:free",
+      "tier": "free",
+      "n_graded": 21,
+      "partial": false,
+      "pass": 18,
+      "intact": 19,
+      "correct": 18,
+      "valid": 19,
+      "median_wall_s": 150.5,
+      "cost_runs_recorded": 0,
+      "cost_per_run_usd": null,
+      "cost_total_usd": null,
+      "stop_reasons": {
+        "finished": 19,
+        "api_failure": 2
+      },
+      "tool_calls": 155,
+      "tool_errors": 0,
+      "tasks_covered": 7,
+      "reps_per_task": {
+        "kyc-t4-insert-ladakh-state": 3,
+        "parking-t5-rename-detailed-report": 3,
+        "pension-t4-insert-cpi-linked-asset-row": 3,
+        "pivotrpt-t4-insert-games-row": 3,
+        "pivotrpt-t5-rename-sheet2": 3,
+        "sparkext-t5-add-lookup-check-sheet": 3,
+        "structrefs-t4-add-guam-to-dropdowns": 3
+      },
+      "runs_without_run_json": [],
+      "failed_tasks": [
+        "pivotrpt-t5-rename-sheet2#2",
+        "sparkext-t5-add-lookup-check-sheet#3",
+        "structrefs-t4-add-guam-to-dropdowns#3"
+      ],
+      "all8": {
+        "n_graded": 24,
+        "pass": 21,
+        "intact": 22
+      },
+      "excluded_task": {
+        "task_id": "benefits-t4-insert-duplicate-exclusion",
+        "n": 3,
+        "pass": 3
+      }
+    },
+    {
+      "model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "tier": "free",
+      "n_graded": 21,
+      "partial": false,
+      "pass": 17,
+      "intact": 18,
+      "correct": 17,
+      "valid": 20,
+      "median_wall_s": 43.9,
+      "cost_runs_recorded": 0,
+      "cost_per_run_usd": null,
+      "cost_total_usd": null,
+      "stop_reasons": {
+        "finished": 19,
+        "empty_reply": 2
+      },
+      "tool_calls": 143,
+      "tool_errors": 0,
+      "tasks_covered": 7,
+      "reps_per_task": {
+        "kyc-t4-insert-ladakh-state": 3,
+        "parking-t5-rename-detailed-report": 3,
+        "pension-t4-insert-cpi-linked-asset-row": 3,
+        "pivotrpt-t4-insert-games-row": 3,
+        "pivotrpt-t5-rename-sheet2": 3,
+        "sparkext-t5-add-lookup-check-sheet": 3,
+        "structrefs-t4-add-guam-to-dropdowns": 3
+      },
+      "runs_without_run_json": [],
+      "failed_tasks": [
+        "sparkext-t5-add-lookup-check-sheet#3",
+        "structrefs-t4-add-guam-to-dropdowns#1",
+        "structrefs-t4-add-guam-to-dropdowns#2",
+        "structrefs-t4-add-guam-to-dropdowns#3"
+      ],
+      "all8": {
+        "n_graded": 24,
+        "pass": 20,
+        "intact": 21
+      },
+      "excluded_task": {
+        "task_id": "benefits-t4-insert-duplicate-exclusion",
+        "n": 3,
+        "pass": 3
+      }
+    },
+    {
+      "model": "poolside/laguna-s-2.1:free",
+      "tier": "free",
+      "n_graded": 21,
+      "partial": false,
+      "pass": 16,
+      "intact": 16,
+      "correct": 16,
+      "valid": 17,
+      "median_wall_s": 173.5,
+      "cost_runs_recorded": 0,
+      "cost_per_run_usd": null,
+      "cost_total_usd": null,
+      "stop_reasons": {
+        "finished": 17,
+        "api_failure": 4
+      },
+      "tool_calls": 167,
+      "tool_errors": 2,
+      "tasks_covered": 7,
+      "reps_per_task": {
+        "kyc-t4-insert-ladakh-state": 3,
+        "parking-t5-rename-detailed-report": 3,
+        "pension-t4-insert-cpi-linked-asset-row": 3,
+        "pivotrpt-t4-insert-games-row": 3,
+        "pivotrpt-t5-rename-sheet2": 3,
+        "sparkext-t5-add-lookup-check-sheet": 3,
+        "structrefs-t4-add-guam-to-dropdowns": 3
+      },
+      "runs_without_run_json": [],
+      "failed_tasks": [
+        "pension-t4-insert-cpi-linked-asset-row#2",
+        "pension-t4-insert-cpi-linked-asset-row#3",
+        "structrefs-t4-add-guam-to-dropdowns#1",
+        "structrefs-t4-add-guam-to-dropdowns#2",
+        "structrefs-t4-add-guam-to-dropdowns#3"
+      ],
+      "all8": {
+        "n_graded": 24,
+        "pass": 19,
+        "intact": 19
+      },
+      "excluded_task": {
+        "task_id": "benefits-t4-insert-duplicate-exclusion",
+        "n": 3,
+        "pass": 3
+      }
+    },
+    {
+      "model": "mistralai/mistral-small-3.2-24b-instruct",
+      "tier": "paid",
+      "n_graded": 21,
+      "partial": false,
+      "pass": 13,
+      "intact": 19,
+      "correct": 13,
+      "valid": 18,
+      "median_wall_s": 25.6,
+      "cost_runs_recorded": 21,
+      "cost_per_run_usd": 0.00301,
+      "cost_total_usd": 0.0633,
+      "stop_reasons": {
+        "finished": 21
+      },
+      "tool_calls": 74,
+      "tool_errors": 0,
+      "tasks_covered": 7,
+      "reps_per_task": {
+        "kyc-t4-insert-ladakh-state": 3,
+        "parking-t5-rename-detailed-report": 3,
+        "pension-t4-insert-cpi-linked-asset-row": 3,
+        "pivotrpt-t4-insert-games-row": 3,
+        "pivotrpt-t5-rename-sheet2": 3,
+        "sparkext-t5-add-lookup-check-sheet": 3,
+        "structrefs-t4-add-guam-to-dropdowns": 3
+      },
+      "runs_without_run_json": [],
+      "failed_tasks": [
+        "kyc-t4-insert-ladakh-state#1",
+        "kyc-t4-insert-ladakh-state#2",
+        "sparkext-t5-add-lookup-check-sheet#1",
+        "sparkext-t5-add-lookup-check-sheet#2",
+        "sparkext-t5-add-lookup-check-sheet#3",
+        "structrefs-t4-add-guam-to-dropdowns#1",
+        "structrefs-t4-add-guam-to-dropdowns#2",
+        "structrefs-t4-add-guam-to-dropdowns#3"
+      ],
+      "all8": {
+        "n_graded": 24,
+        "pass": 16,
+        "intact": 22
+      },
+      "excluded_task": {
+        "task_id": "benefits-t4-insert-duplicate-exclusion",
+        "n": 3,
+        "pass": 3
+      }
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "tier": "paid",
+      "n_graded": 21,
+      "partial": false,
+      "pass": 12,
+      "intact": 15,
+      "correct": 13,
+      "valid": 18,
+      "median_wall_s": 39.5,
+      "cost_runs_recorded": 21,
+      "cost_per_run_usd": 0.00209,
+      "cost_total_usd": 0.0439,
+      "stop_reasons": {
+        "finished": 16,
+        "empty_reply": 5
+      },
+      "tool_calls": 104,
+      "tool_errors": 2,
+      "tasks_covered": 7,
+      "reps_per_task": {
+        "kyc-t4-insert-ladakh-state": 3,
+        "parking-t5-rename-detailed-report": 3,
+        "pension-t4-insert-cpi-linked-asset-row": 3,
+        "pivotrpt-t4-insert-games-row": 3,
+        "pivotrpt-t5-rename-sheet2": 3,
+        "sparkext-t5-add-lookup-check-sheet": 3,
+        "structrefs-t4-add-guam-to-dropdowns": 3
+      },
+      "runs_without_run_json": [],
+      "failed_tasks": [
+        "pivotrpt-t4-insert-games-row#1",
+        "pivotrpt-t4-insert-games-row#2",
+        "pivotrpt-t4-insert-games-row#3",
+        "sparkext-t5-add-lookup-check-sheet#1",
+        "sparkext-t5-add-lookup-check-sheet#2",
+        "sparkext-t5-add-lookup-check-sheet#3",
+        "structrefs-t4-add-guam-to-dropdowns#1",
+        "structrefs-t4-add-guam-to-dropdowns#2",
+        "structrefs-t4-add-guam-to-dropdowns#3"
+      ],
+      "all8": {
+        "n_graded": 24,
+        "pass": 15,
+        "intact": 18
+      },
+      "excluded_task": {
+        "task_id": "benefits-t4-insert-duplicate-exclusion",
+        "n": 3,
+        "pass": 3
+      }
+    },
+    {
+      "model": "anthropic/claude-haiku-4.5",
+      "tier": "paid",
+      "n_graded": 7,
+      "partial": true,
+      "pass": 6,
+      "intact": 6,
+      "correct": 6,
+      "valid": 7,
+      "median_wall_s": 24.8,
+      "cost_runs_recorded": 7,
+      "cost_per_run_usd": 0.0933,
+      "cost_total_usd": 0.6531,
+      "stop_reasons": {
+        "finished": 7
+      },
+      "tool_calls": 46,
+      "tool_errors": 0,
+      "tasks_covered": 7,
+      "reps_per_task": {
+        "kyc-t4-insert-ladakh-state": 1,
+        "parking-t5-rename-detailed-report": 1,
+        "pension-t4-insert-cpi-linked-asset-row": 1,
+        "pivotrpt-t4-insert-games-row": 1,
+        "pivotrpt-t5-rename-sheet2": 1,
+        "sparkext-t5-add-lookup-check-sheet": 1,
+        "structrefs-t4-add-guam-to-dropdowns": 1
+      },
+      "runs_without_run_json": [],
+      "failed_tasks": [
+        "structrefs-t4-add-guam-to-dropdowns#1"
+      ],
+      "all8": {
+        "n_graded": 8,
+        "pass": 7,
+        "intact": 7
+      },
+      "excluded_task": {
+        "task_id": "benefits-t4-insert-duplicate-exclusion",
+        "n": 1,
+        "pass": 1
+      }
+    },
+    {
+      "model": "deepseek/deepseek-v3.2",
+      "tier": "paid",
+      "n_graded": 5,
+      "partial": true,
+      "pass": 3,
+      "intact": 4,
+      "correct": 3,
+      "valid": 5,
+      "median_wall_s": 86.6,
+      "cost_runs_recorded": 5,
+      "cost_per_run_usd": 0.02843,
+      "cost_total_usd": 0.1422,
+      "stop_reasons": {
+        "finished": 5
+      },
+      "tool_calls": 52,
+      "tool_errors": 0,
+      "tasks_covered": 5,
+      "reps_per_task": {
+        "pension-t4-insert-cpi-linked-asset-row": 1,
+        "pivotrpt-t4-insert-games-row": 1,
+        "pivotrpt-t5-rename-sheet2": 1,
+        "sparkext-t5-add-lookup-check-sheet": 1,
+        "structrefs-t4-add-guam-to-dropdowns": 1
+      },
+      "runs_without_run_json": [],
+      "failed_tasks": [
+        "pension-t4-insert-cpi-linked-asset-row#1",
+        "structrefs-t4-add-guam-to-dropdowns#1"
+      ],
+      "all8": {
+        "n_graded": 6,
+        "pass": 4,
+        "intact": 5
+      },
+      "excluded_task": {
+        "task_id": "benefits-t4-insert-duplicate-exclusion",
+        "n": 1,
+        "pass": 1
+      }
+    },
+    {
+      "model": "command-a-plus-05-2026",
+      "tier": "free-gateway",
+      "n_graded": 7,
+      "partial": true,
+      "pass": 4,
+      "intact": 5,
+      "correct": 4,
+      "valid": 6,
+      "median_wall_s": 295.9,
+      "cost_runs_recorded": 0,
+      "cost_per_run_usd": null,
+      "cost_total_usd": null,
+      "stop_reasons": {
+        "finished": 4,
+        "cap_tool_calls": 3
+      },
+      "tool_calls": 162,
+      "tool_errors": 42,
+      "tasks_covered": 7,
+      "reps_per_task": {
+        "kyc-t4-insert-ladakh-state": 1,
+        "parking-t5-rename-detailed-report": 1,
+        "pension-t4-insert-cpi-linked-asset-row": 1,
+        "pivotrpt-t4-insert-games-row": 1,
+        "pivotrpt-t5-rename-sheet2": 1,
+        "sparkext-t5-add-lookup-check-sheet": 1,
+        "structrefs-t4-add-guam-to-dropdowns": 1
+      },
+      "runs_without_run_json": [],
+      "failed_tasks": [
+        "pension-t4-insert-cpi-linked-asset-row#1",
+        "pivotrpt-t4-insert-games-row#1",
+        "structrefs-t4-add-guam-to-dropdowns#1"
+      ],
+      "all8": {
+        "n_graded": 8,
+        "pass": 4,
+        "intact": 6
+      },
+      "excluded_task": {
+        "task_id": "benefits-t4-insert-duplicate-exclusion",
+        "n": 1,
+        "pass": 0
+      }
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "tier": "paid",
+      "n_graded": 7,
+      "partial": true,
+      "pass": 4,
+      "intact": 5,
+      "correct": 4,
+      "valid": 6,
+      "median_wall_s": 50.4,
+      "cost_runs_recorded": 7,
+      "cost_per_run_usd": 0.00107,
+      "cost_total_usd": 0.0075,
+      "stop_reasons": {
+        "empty_reply": 3,
+        "finished": 4
+      },
+      "tool_calls": 31,
+      "tool_errors": 6,
+      "tasks_covered": 7,
+      "reps_per_task": {
+        "kyc-t4-insert-ladakh-state": 1,
+        "parking-t5-rename-detailed-report": 1,
+        "pension-t4-insert-cpi-linked-asset-row": 1,
+        "pivotrpt-t4-insert-games-row": 1,
+        "pivotrpt-t5-rename-sheet2": 1,
+        "sparkext-t5-add-lookup-check-sheet": 1,
+        "structrefs-t4-add-guam-to-dropdowns": 1
+      },
+      "runs_without_run_json": [],
+      "failed_tasks": [
+        "kyc-t4-insert-ladakh-state#1",
+        "sparkext-t5-add-lookup-check-sheet#1",
+        "structrefs-t4-add-guam-to-dropdowns#1"
+      ],
+      "all8": {
+        "n_graded": 8,
+        "pass": 4,
+        "intact": 6
+      },
+      "excluded_task": {
+        "task_id": "benefits-t4-insert-duplicate-exclusion",
+        "n": 1,
+        "pass": 0
+      }
+    },
+    {
+      "model": "command-a-03-2025",
+      "tier": "free-gateway",
+      "n_graded": 7,
+      "partial": true,
+      "pass": 2,
+      "intact": 6,
+      "correct": 2,
+      "valid": 6,
+      "median_wall_s": 22.8,
+      "cost_runs_recorded": 0,
+      "cost_per_run_usd": null,
+      "cost_total_usd": null,
+      "stop_reasons": {
+        "finished": 7
+      },
+      "tool_calls": 26,
+      "tool_errors": 0,
+      "tasks_covered": 7,
+      "reps_per_task": {
+        "kyc-t4-insert-ladakh-state": 1,
+        "parking-t5-rename-detailed-report": 1,
+        "pension-t4-insert-cpi-linked-asset-row": 1,
+        "pivotrpt-t4-insert-games-row": 1,
+        "pivotrpt-t5-rename-sheet2": 1,
+        "sparkext-t5-add-lookup-check-sheet": 1,
+        "structrefs-t4-add-guam-to-dropdowns": 1
+      },
+      "runs_without_run_json": [],
+      "failed_tasks": [
+        "kyc-t4-insert-ladakh-state#1",
+        "pension-t4-insert-cpi-linked-asset-row#1",
+        "pivotrpt-t4-insert-games-row#1",
+        "sparkext-t5-add-lookup-check-sheet#1",
+        "structrefs-t4-add-guam-to-dropdowns#1"
+      ],
+      "all8": {
+        "n_graded": 8,
+        "pass": 2,
+        "intact": 7
+      },
+      "excluded_task": {
+        "task_id": "benefits-t4-insert-duplicate-exclusion",
+        "n": 1,
+        "pass": 0
+      }
+    }
+  ],
+  "spend": {
+    "paid_spend_log_final_usd": 1.3236,
+    "paid_run_json_cost_sum_usd": 1.3126,
+    "paid_run_json_count": 94,
+    "graded_runs_cost_sum_usd": 1.3126,
+    "free_tier_runs_billed": 0
+  }
+}

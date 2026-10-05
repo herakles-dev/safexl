@@ -1,0 +1,64 @@
+{
+  "task_id": "parking-t5-rename-detailed-report",
+  "arm": "B",
+  "rep": 1,
+  "workbook": "research/xlsx-bench/corpus/parking-study-report.xlsm",
+  "prompt": "Rename the 'Detailed_report' tab to 'Detail Report'.",
+  "model": "poolside/laguna-s-2.1:free",
+  "provider": "openrouter",
+  "started_at": "2026-10-04T05:43:57Z",
+  "output_files": [],
+  "contamination": {
+    "contaminated": false,
+    "evidence": []
+  },
+  "timed_out": false,
+  "tool_calls": [
+    {
+      "name": "safexl_inspect",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/poolside_laguna-s-2.1_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\"}",
+      "result": "{\"ok\": true, \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/poolside_laguna-s-2.1_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\", \"sheets\": [{\"name\": \"CCSInfo\", \"sheet_id\": \"4\", \"declared_dimension\": \"A1:Z96\", \"actual_used_range\": \"A1:Z96\", \"dimension_matches\": true, \"formula_count\": 0, \"data_validation_native\": 0, \"data_validation_extlst\": 0, \"conditional_formatting_native\": 0, \"conditional_formatting_extlst\": 0}, {\"name\": \"General\", \"sheet_id\": \"5\", \"declared_dimension\": \"A1:IR264\", \"actual_used_range\": \"A1:IR264\", \"dime"
+    },
+    {
+      "name": "safexl_rename_sheet",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/poolside_laguna-s-2.1_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\", \"old_name\": \"Detailed_report\", \"new_name\": \"Detail Report\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/poolside_laguna-s-2.1_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\", \"overwrite\": true}",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/poolside_laguna-s-2.1_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/poolside_laguna-s-2.1_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\", \"old_name\": \"Detailed_report\", \"new_name\": \"Detail Report\", \"parts\": {\"changed\": [\"xl/charts/chart1.xml\", \"xl/workbook.xml\"], \"added\": [], \"removed\": [], \"unchanged_count\": 47}, \"validation\": \"pa"
+    },
+    {
+      "name": "safexl_verify",
+      "error": false,
+      "kind": null,
+      "args": "{\"before_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/poolside_laguna-s-2.1_free/parking-t5-rename-detailed-report/B/1/ref/parking-study-report.xlsm\", \"after_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/poolside_laguna-s-2.1_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\"}",
+      "result": "{\"ok\": true, \"verdict\": \"intact\", \"valid\": true, \"lost_features\": [], \"rebuilt\": false, \"parts\": {\"unchanged\": 47, \"changed\": [\"xl/charts/chart1.xml\", \"xl/workbook.xml\"], \"added\": [], \"removed\": []}, \"before_sha256\": \"2cf7459faa9d15c1deef4c410fc05142c4f57ebee622668e2526d7b3e34e08fa\", \"after_sha256\": \"d918bf3e07c522c440eaeb671a2533f3908e88f787d9228cdd06dd2575cb0a38\", \"reasons\": []}"
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/poolside_laguna-s-2.1_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\", \"find\": \"Detail Report\", \"max_cells\": 10}",
+      "result": "{\"ok\": true, \"sheets\": [\"CCSInfo\", \"General\", \"Detail Report\", \"Summary_report\", \"Detailed_graph\", \"Summary_graph\", \"Tabelle1\", \"Tabelle2\", \"Tabelle3\"], \"sheet\": null, \"dims\": null, \"cells\": [], \"truncated\": false}"
+    },
+    {
+      "name": "safexl_inspect",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/poolside_laguna-s-2.1_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\"}",
+      "result": "{\"ok\": true, \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/poolside_laguna-s-2.1_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\", \"sheets\": [{\"name\": \"CCSInfo\", \"sheet_id\": \"4\", \"declared_dimension\": \"A1:Z96\", \"actual_used_range\": \"A1:Z96\", \"dimension_matches\": true, \"formula_count\": 0, \"data_validation_native\": 0, \"data_validation_extlst\": 0, \"conditional_formatting_native\": 0, \"conditional_formatting_extlst\": 0}, {\"name\": \"General\", \"sheet_id\": \"5\", \"declared_dimension\": \"A1:IR264\", \"actual_used_range\": \"A1:IR264\", \"dime"
+    }
+  ],
+  "api_retries": [],
+  "tokens_in": 81998,
+  "tokens_out": 1758,
+  "steps": 6,
+  "first_tool_call_s": 4.92,
+  "final_text": "The rename is complete and fully verified.\n\n## Summary\n\n**Action:** Renamed the `Detailed_report` worksheet tab to `Detail Report`.\n\n**What changed (2 parts):**\n- `xl/workbook.xml` — the sheet name itself\n- `xl/charts/chart1.xml` — one chart's source-series sheet reference was updated to match the new name\n\n**What stayed intact (47 parts unchanged, byte-for-byte):**\n- All 213 defined names that referenced `Detailed_report` were automatically rewritten to `'Detail Report'` (with proper single-quote quoting since the new name contains a space), e.g. `'Detail Report'!$Z$6`\n- The VBA macro project (98 KB, including `Workbook_Open`) is byte-identical\n- 2 charts, 4 drawings, 2 media files all preserved\n- All other sheets and their content untouched\n\n**Verification:** `safexl_verify` confirmed the file is **intact** — no features were lost, no unexpected structural changes.",
+  "stop_reason": "finished",
+  "wall_seconds": 46.57,
+  "finished_at": "2026-10-04T05:44:43Z",
+  "tool_call_count": 5,
+  "tool_error_count": 0
+}

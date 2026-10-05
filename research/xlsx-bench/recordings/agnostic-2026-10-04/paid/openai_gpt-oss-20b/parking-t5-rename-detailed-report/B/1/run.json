@@ -1,0 +1,54 @@
+{
+  "task_id": "parking-t5-rename-detailed-report",
+  "arm": "B",
+  "rep": 1,
+  "workbook": "research/xlsx-bench/corpus/parking-study-report.xlsm",
+  "prompt": "Rename the 'Detailed_report' tab to 'Detail Report'.",
+  "model": "openai/gpt-oss-20b",
+  "provider": "openrouter-paid",
+  "started_at": "2026-10-04T05:42:30Z",
+  "output_files": [],
+  "contamination": {
+    "contaminated": false,
+    "evidence": []
+  },
+  "timed_out": false,
+  "tool_calls": [
+    {
+      "name": "safexl_rename_sheet",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-20b/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\",\"old_name\":\"Detailed_report\",\"new_name\":\"Detail Report\",\"output_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-20b/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\",\"overwrite\":true}",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-20b/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-20b/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\", \"old_name\": \"Detailed_report\", \"new_name\": \"Detail Report\", \"parts\": {\"changed\": [\"xl/charts/chart1.xml\", \"xl/workbook.xml\"], \"added\": [], \"removed\": [], \"unchanged_count\": 47}, \"validation\": \"passed: "
+    },
+    {
+      "name": "safexl_verify<|channel|>",
+      "error": true,
+      "kind": "unknown_tool",
+      "args": "{\"before_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-20b/parking-t5-rename-detailed-report/B/1/ref/parking-study-report.xlsm\",\"after_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-20b/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\"}",
+      "result": "Unknown tool: safexl_verify<|channel|>"
+    },
+    {
+      "name": "safexl_verify",
+      "error": false,
+      "kind": null,
+      "args": "{\"before_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-20b/parking-t5-rename-detailed-report/B/1/ref/parking-study-report.xlsm\",\"after_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-20b/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\"}",
+      "result": "{\"ok\": true, \"verdict\": \"intact\", \"valid\": true, \"lost_features\": [], \"rebuilt\": false, \"parts\": {\"unchanged\": 47, \"changed\": [\"xl/charts/chart1.xml\", \"xl/workbook.xml\"], \"added\": [], \"removed\": []}, \"before_sha256\": \"2cf7459faa9d15c1deef4c410fc05142c4f57ebee622668e2526d7b3e34e08fa\", \"after_sha256\": \"d918bf3e07c522c440eaeb671a2533f3908e88f787d9228cdd06dd2575cb0a38\", \"reasons\": []}"
+    }
+  ],
+  "api_retries": [],
+  "tokens_in": 19142,
+  "tokens_out": 664,
+  "steps": 4,
+  "first_tool_call_s": 17.32,
+  "final_text": "The sheet **“Detailed_report”** has been renamed to **“Detail Report”**. All internal references and formulas were updated automatically, and the workbook remains intact.",
+  "stop_reason": "finished",
+  "cost_usd": 0.00053258,
+  "providers": [
+    "Parasail"
+  ],
+  "wall_seconds": 30.0,
+  "finished_at": "2026-10-04T05:43:00Z",
+  "tool_call_count": 3,
+  "tool_error_count": 1
+}

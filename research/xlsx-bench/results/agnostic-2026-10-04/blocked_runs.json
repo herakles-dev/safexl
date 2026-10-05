@@ -1,0 +1,34 @@
+{
+  "tier": "Groq free tier",
+  "groq_tpm_limit": 8000,
+  "rejected_request_tokens": [
+    8280,
+    8345
+  ],
+  "other_failure": "gateway 503 when its keys were in backoff",
+  "models": [
+    {
+      "model": "openai/gpt-oss-120b",
+      "runs_recorded": 6,
+      "stop_reasons": {
+        "api_failure": 5,
+        "finished": 1
+      }
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "runs_recorded": 8,
+      "stop_reasons": {
+        "api_failure": 7,
+        "finished": 1
+      }
+    },
+    {
+      "model": "qwen/qwen3.8-27b",
+      "runs_recorded": 8,
+      "stop_reasons": {
+        "api_failure": 8
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "task_id": "sparkext-t5-add-lookup-check-sheet",
+  "arm": "B",
+  "rep": 1,
+  "workbook": "research/xlsx-bench/corpus/sparkline-external-reference.xlsx",
+  "prompt": "Add a new sheet called 'Lookup Check' that shows the matched factor value for record 51064, pulled from Sheet2.",
+  "model": "openai/gpt-oss-20b",
+  "provider": "openrouter-paid",
+  "started_at": "2026-10-04T05:41:27Z",
+  "output_files": [],
+  "contamination": {
+    "contaminated": false,
+    "evidence": []
+  },
+  "timed_out": false,
+  "tool_calls": [
+    {
+      "name": "safexl_inspect",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-20b/sparkext-t5-add-lookup-check-sheet/B/1/work/sparkline-external-reference.xlsx\"}",
+      "result": "{\"ok\": true, \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-20b/sparkext-t5-add-lookup-check-sheet/B/1/work/sparkline-external-reference.xlsx\", \"sheets\": [{\"name\": \"Sheet1\", \"sheet_id\": \"4\", \"declared_dimension\": \"A1:B2\", \"actual_used_range\": \"A1:B2\", \"dimension_matches\": true, \"formula_count\": 1, \"data_validation_native\": 2, \"data_validation_extlst\": 0, \"conditional_formatting_native\": 0, \"conditional_formatting_extlst\": 0}, {\"name\": \"Sheet2\", \"sheet_id\": \"5\", \"declared_dimension\": \"A1:ET1\", \"actual_used_range\": \"A1:ET1\", \"dimens"
+    }
+  ],
+  "api_retries": [],
+  "tokens_in": 8824,
+  "tokens_out": 244,
+  "steps": 2,
+  "first_tool_call_s": 5.11,
+  "final_text": "",
+  "stop_reason": "empty_reply",
+  "cost_usd": 0.000290056,
+  "providers": [
+    "DekaLLM"
+  ],
+  "wall_seconds": 11.9,
+  "finished_at": "2026-10-04T05:41:39Z",
+  "tool_call_count": 1,
+  "tool_error_count": 0
+}

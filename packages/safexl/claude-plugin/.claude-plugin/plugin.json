@@ -1,0 +1,19 @@
+{
+  "name": "safexl",
+  "version": "0.2.0",
+  "description": "A hook that watches your workbooks while Claude works. If another library, say openpyxl or pandas, re-saves one, the hook rebuilds it from the original and keeps the cell edits Claude made. When that can't be done, it puts the original back and tells Claude to redo the edit with safexl. No row deletion, no column inserts, no charts. Checked in LibreOffice, not Excel.",
+  "author": {
+    "name": "herakles-dev",
+    "url": "https://github.com/herakles-dev"
+  },
+  "homepage": "https://github.com/herakles-dev/safexl",
+  "license": "MIT",
+  "keywords": [
+    "excel",
+    "xlsx",
+    "xlsm",
+    "spreadsheet",
+    "ooxml",
+    "vba"
+  ]
+}

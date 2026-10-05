@@ -1,0 +1,64 @@
+{
+  "task_id": "pivotrpt-t4-insert-games-row",
+  "arm": "B",
+  "rep": 3,
+  "workbook": "research/xlsx-bench/corpus/pivot-chart-report.xlsx",
+  "prompt": "Add a new row to the raw data sheet for a Games category in 2006: cost 450000, revenue 612000. Put it right after the 2006 Electronics row.",
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "provider": "openrouter",
+  "started_at": "2026-10-04T06:06:16Z",
+  "output_files": [],
+  "contamination": {
+    "contaminated": false,
+    "evidence": []
+  },
+  "timed_out": false,
+  "tool_calls": [
+    {
+      "name": "safexl_inspect",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\"}",
+      "result": "{\"ok\": true, \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\", \"sheets\": [{\"name\": \"Sheet1\", \"sheet_id\": \"1\", \"declared_dimension\": \"A1:F13\", \"actual_used_range\": \"A1:F13\", \"dimension_matches\": true, \"formula_count\": 0, \"data_validation_native\": 0, \"data_validation_extlst\": 0, \"conditional_formatting_native\": 0, \"conditional_formatting_extlst\": 0}, {\"name\": \"Sheet6\", \"sheet_id\": \"6\", \"declared_dimension\": \"A3:G9\", \"actual_used_range\": \"A3:G9\", \"dimensi"
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\",\"sheet\":\"Sheet1\",\"cell_range\":\"A1:F20\"}",
+      "result": "{\"ok\": true, \"sheets\": [\"Sheet1\", \"Sheet6\", \"Sheet5\", \"Sheet4\", \"Sheet3\", \"Sheet2\", \"Chart2\"], \"sheet\": \"Sheet1\", \"dims\": \"A1:D13\", \"cells\": [{\"ref\": \"A1\", \"type\": \"s\", \"value\": \"Year\"}, {\"ref\": \"B1\", \"type\": \"s\", \"value\": \"Category\"}, {\"ref\": \"C1\", \"type\": \"s\", \"value\": \"Cost\"}, {\"ref\": \"D1\", \"type\": \"s\", \"value\": \"Revenue\"}, {\"ref\": \"A2\", \"type\": \"n\", \"value\": 2005}, {\"ref\": \"B2\", \"type\": \"s\", \"value\": \"Books\"}, {\"ref\": \"C2\", \"type\": \"n\", \"value\": 889017}, {\"ref\": \"D2\", \"type\": \"n\", \"value\": 1140362.5}, {\"ref\": \"A3\", \"type\": \"n\", \"value\": 2005}, {\"ref\": \"B3\", \"type\": \"s\", \"value\": \"Electroni"
+    },
+    {
+      "name": "safexl_insert_rows",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\",\"sheet_name\":\"Sheet1\",\"row\":8,\"count\":1,\"output_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\",\"overwrite\":true}",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\", \"sheet\": \"Sheet1\", \"row\": 8, \"count\": 1, \"parts\": {\"changed\": [\"xl/pivotCache/pivotCacheDefinition1.xml\", \"xl/pivotCache/pivotCacheDefinition2.xml\", \"xl/pivotCache/pivotCacheDefinition3"
+    },
+    {
+      "name": "safexl_edit",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\",\"changes\":[{\"sheet\":\"Sheet1\",\"cell\":\"A8\",\"value\":2006},{\"sheet\":\"Sheet1\",\"cell\":\"B8\",\"value\":\"Games\"},{\"sheet\":\"Sheet1\",\"cell\":\"C8\",\"value\":450000},{\"sheet\":\"Sheet1\",\"cell\":\"D8\",\"value\":612000}],\"output_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\",\"overwrite\":t",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\", \"tables_extended\": [], \"cells_written\": 4, \"formula_cells\": 0, \"sheets_edited\": [\"Sheet1\"], \"validation\": \"passed: 0 CRITICAL structural findings (the file is only written if this holds"
+    },
+    {
+      "name": "safexl_verify",
+      "error": false,
+      "kind": null,
+      "args": "{\"before_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/pivotrpt-t4-insert-games-row/B/3/ref/pivot-chart-report.xlsx\",\"after_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/pivotrpt-t4-insert-games-row/B/3/work/pivot-chart-report.xlsx\"}",
+      "result": "{\"ok\": true, \"verdict\": \"intact\", \"valid\": true, \"lost_features\": [], \"rebuilt\": false, \"parts\": {\"unchanged\": 39, \"changed\": [\"xl/pivotCache/pivotCacheDefinition1.xml\", \"xl/pivotCache/pivotCacheDefinition2.xml\", \"xl/pivotCache/pivotCacheDefinition3.xml\", \"xl/workbook.xml\", \"xl/worksheets/sheet1.xml\"], \"added\": [], \"removed\": []}, \"before_sha256\": \"792b9f21afdb6b8b1f82345864ee15d55c17a1b54d71c250e82c87304385d362\", \"after_sha256\": \"9e8b7277cf29688dfdb55890abb7b387c7040d908b61523f74492220f1926bb7\", \"reasons\": []}"
+    }
+  ],
+  "api_retries": [],
+  "tokens_in": 54776,
+  "tokens_out": 1981,
+  "steps": 6,
+  "first_tool_call_s": 2.43,
+  "final_text": "Inserted a new row for the Games category in 2006 immediately after the 2006 Electronics row in Sheet1. Added values: Year=2006, Category=Games, Cost=450000, Revenue=612000. The workbook's structure (charts, pivot tables, etc.) remains intact.",
+  "stop_reason": "finished",
+  "wall_seconds": 17.27,
+  "finished_at": "2026-10-04T06:06:33Z",
+  "tool_call_count": 5,
+  "tool_error_count": 0
+}

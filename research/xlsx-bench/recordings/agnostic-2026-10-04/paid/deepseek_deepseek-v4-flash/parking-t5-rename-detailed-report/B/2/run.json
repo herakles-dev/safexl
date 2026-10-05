@@ -1,0 +1,61 @@
+{
+  "task_id": "parking-t5-rename-detailed-report",
+  "arm": "B",
+  "rep": 2,
+  "workbook": "research/xlsx-bench/corpus/parking-study-report.xlsm",
+  "prompt": "Rename the 'Detailed_report' tab to 'Detail Report'.",
+  "model": "deepseek/deepseek-v4-flash",
+  "provider": "openrouter-paid",
+  "started_at": "2026-10-04T05:54:30Z",
+  "output_files": [],
+  "contamination": {
+    "contaminated": false,
+    "evidence": []
+  },
+  "timed_out": false,
+  "tool_calls": [
+    {
+      "name": "safexl_inspect",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/deepseek_deepseek-v4-flash/parking-t5-rename-detailed-report/B/2/work/parking-study-report.xlsm\"}",
+      "result": "{\"ok\": true, \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/deepseek_deepseek-v4-flash/parking-t5-rename-detailed-report/B/2/work/parking-study-report.xlsm\", \"sheets\": [{\"name\": \"CCSInfo\", \"sheet_id\": \"4\", \"declared_dimension\": \"A1:Z96\", \"actual_used_range\": \"A1:Z96\", \"dimension_matches\": true, \"formula_count\": 0, \"data_validation_native\": 0, \"data_validation_extlst\": 0, \"conditional_formatting_native\": 0, \"conditional_formatting_extlst\": 0}, {\"name\": \"General\", \"sheet_id\": \"5\", \"declared_dimension\": \"A1:IR264\", \"actual_used_range\": \"A1:IR264\", "
+    },
+    {
+      "name": "safexl_rename_sheet",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/deepseek_deepseek-v4-flash/parking-t5-rename-detailed-report/B/2/work/parking-study-report.xlsm\", \"old_name\": \"Detailed_report\", \"new_name\": \"Detail Report\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/deepseek_deepseek-v4-flash/parking-t5-rename-detailed-report/B/2/work/parking-study-report.xlsm\", \"overwrite\": true}",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/deepseek_deepseek-v4-flash/parking-t5-rename-detailed-report/B/2/work/parking-study-report.xlsm\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/deepseek_deepseek-v4-flash/parking-t5-rename-detailed-report/B/2/work/parking-study-report.xlsm\", \"old_name\": \"Detailed_report\", \"new_name\": \"Detail Report\", \"parts\": {\"changed\": [\"xl/charts/chart1.xml\", \"xl/workbook.xml\"], \"added\": [], \"removed\": [], \"unchanged_count\": 47}, \"valida"
+    },
+    {
+      "name": "safexl_verify",
+      "error": false,
+      "kind": null,
+      "args": "{\"before_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/deepseek_deepseek-v4-flash/parking-t5-rename-detailed-report/B/2/ref/parking-study-report.xlsm\", \"after_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/deepseek_deepseek-v4-flash/parking-t5-rename-detailed-report/B/2/work/parking-study-report.xlsm\"}",
+      "result": "{\"ok\": true, \"verdict\": \"intact\", \"valid\": true, \"lost_features\": [], \"rebuilt\": false, \"parts\": {\"unchanged\": 47, \"changed\": [\"xl/charts/chart1.xml\", \"xl/workbook.xml\"], \"added\": [], \"removed\": []}, \"before_sha256\": \"2cf7459faa9d15c1deef4c410fc05142c4f57ebee622668e2526d7b3e34e08fa\", \"after_sha256\": \"d918bf3e07c522c440eaeb671a2533f3908e88f787d9228cdd06dd2575cb0a38\", \"reasons\": []}"
+    },
+    {
+      "name": "safexl_inspect",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/deepseek_deepseek-v4-flash/parking-t5-rename-detailed-report/B/2/work/parking-study-report.xlsm\"}",
+      "result": "{\"ok\": true, \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/deepseek_deepseek-v4-flash/parking-t5-rename-detailed-report/B/2/work/parking-study-report.xlsm\", \"sheets\": [{\"name\": \"CCSInfo\", \"sheet_id\": \"4\", \"declared_dimension\": \"A1:Z96\", \"actual_used_range\": \"A1:Z96\", \"dimension_matches\": true, \"formula_count\": 0, \"data_validation_native\": 0, \"data_validation_extlst\": 0, \"conditional_formatting_native\": 0, \"conditional_formatting_extlst\": 0}, {\"name\": \"General\", \"sheet_id\": \"5\", \"declared_dimension\": \"A1:IR264\", \"actual_used_range\": \"A1:IR264\", "
+    }
+  ],
+  "api_retries": [],
+  "tokens_in": 73885,
+  "tokens_out": 1104,
+  "steps": 5,
+  "first_tool_call_s": 2.36,
+  "final_text": "## Summary\n\nI renamed the worksheet **'Detailed_report'** to **'Detail Report'** in the workbook `parking-study-report.xlsm`.\n\n**What was done:**\n- Called `safexl_rename_sheet` with `old_name=\"Detailed_report\"` and `new_name=\"Detail Report\"`, writing the result back to the same file with `overwrite=true`.\n\n**What SafeXL handled automatically:**\n- Updated the sheet name in the workbook's sheet list (`xl/workbook.xml`)\n- Updated all 213 defined names that referenced the old sheet (e.g. `Detailed_report!$C$7` → `'Detail Report'!$C$7`)\n- Updated chart references (`xl/charts/chart1.xml`) that pointed to the old sheet name\n- All other parts (VBA macros, formulas, pivot tables, data validation, conditional formatting, images) remained byte-identical\n\n**Verification:** `safexl_verify` returned **\"intact\"** — only the two expected internal parts changed, no features were lost.",
+  "stop_reason": "finished",
+  "cost_usd": 0.0030681439999999996,
+  "providers": [
+    "Relace"
+  ],
+  "wall_seconds": 17.33,
+  "finished_at": "2026-10-04T05:54:47Z",
+  "tool_call_count": 4,
+  "tool_error_count": 0
+}

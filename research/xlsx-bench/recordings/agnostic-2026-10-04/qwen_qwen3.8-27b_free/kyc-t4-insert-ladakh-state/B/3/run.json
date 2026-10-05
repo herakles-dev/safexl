@@ -1,0 +1,85 @@
+{
+  "task_id": "kyc-t4-insert-ladakh-state",
+  "arm": "B",
+  "rep": 3,
+  "workbook": "research/xlsx-bench/corpus/kyc-intake-data-dictionary.xlsx",
+  "prompt": "Add Ladakh to the state list, right after Jammu and Kashmir, with code 038.",
+  "model": "qwen/qwen3.8-27b:free",
+  "provider": "openrouter",
+  "started_at": "2026-10-04T06:43:38Z",
+  "output_files": [],
+  "contamination": {
+    "contaminated": false,
+    "evidence": []
+  },
+  "timed_out": false,
+  "tool_calls": [
+    {
+      "name": "safexl_inspect",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/work/kyc-intake-data-dictionary.xlsx\"}",
+      "result": "{\"ok\": true, \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/work/kyc-intake-data-dictionary.xlsx\", \"sheets\": [{\"name\": \"KYC HEADER\", \"sheet_id\": \"24\", \"declared_dimension\": \"A1:I7\", \"actual_used_range\": \"A1:I7\", \"dimension_matches\": true, \"formula_count\": 1, \"data_validation_native\": 0, \"data_validation_extlst\": 0, \"conditional_formatting_native\": 0, \"conditional_formatting_extlst\": 0}, {\"name\": \"KYC\", \"sheet_id\": \"25\", \"declared_dimension\": \"A1:K93\", \"actual_used_range\": \"A1:K93\", \"dimension_match"
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/work/kyc-intake-data-dictionary.xlsx\",\"sheet\":\"State Master\",\"cell_range\":\"A1:C40\"}",
+      "result": "{\"ok\": true, \"sheets\": [\"KYC HEADER\", \"KYC\", \"ADDL INFO\", \"KYC TRAILER\", \"KYC Update Type\", \"Addtl KYC Update Type\", \"Entity Type\", \"Document & EXEMPTED &  PAN COPY\", \"IPV Status\", \"Identity Proof\", \"Address Proof\", \"Gender\", \"Marital Status\", \"Exempt Category\", \"Company Type\", \"Nationality\", \"Residential Status\", \"NRI Residential Status Proof\", \"Occupation\", \"Income Slab\", \"PEP Status\", \"KYC Status\", \"Rejection Reasons\", \"Relationship Status\", \"Document submission Details\", \"State Master\", \"Country Master\", \"Country Master (2)\", \"Dump Type\", \"KYC_MODE\"], \"sheet\": \"State Master\", \"dims\": \"A1:C"
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/work/kyc-intake-data-dictionary.xlsx\",\"find\":\"Jammu\"}",
+      "result": "{\"ok\": true, \"sheets\": [\"KYC HEADER\", \"KYC\", \"ADDL INFO\", \"KYC TRAILER\", \"KYC Update Type\", \"Addtl KYC Update Type\", \"Entity Type\", \"Document & EXEMPTED &  PAN COPY\", \"IPV Status\", \"Identity Proof\", \"Address Proof\", \"Gender\", \"Marital Status\", \"Exempt Category\", \"Company Type\", \"Nationality\", \"Residential Status\", \"NRI Residential Status Proof\", \"Occupation\", \"Income Slab\", \"PEP Status\", \"KYC Status\", \"Rejection Reasons\", \"Relationship Status\", \"Document submission Details\", \"State Master\", \"Country Master\", \"Country Master (2)\", \"Dump Type\", \"KYC_MODE\"], \"sheet\": null, \"dims\": null, \"cells\": "
+    },
+    {
+      "name": "safexl_insert_rows",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/work/kyc-intake-data-dictionary.xlsx\",\"sheet_name\":\"State Master\",\"row\":3,\"count\":1,\"output_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/work/kyc-intake-data-dictionary.xlsx\",\"overwrite\":true}",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/work/kyc-intake-data-dictionary.xlsx\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/work/kyc-intake-data-dictionary.xlsx\", \"sheet\": \"State Master\", \"row\": 3, \"count\": 1, \"parts\": {\"changed\": [\"xl/workbook.xml\", \"xl/worksheets/sheet26.xml\"], \"added\": [], \"removed\": [], \"unchanged_count\": 39}, \"validation\": \"passed: 0 CRITICAL str"
+    },
+    {
+      "name": "safexl_edit",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/work/kyc-intake-data-dictionary.xlsx\",\"changes\":[{\"sheet\":\"State Master\",\"cell\":\"A3\",\"value\":\"038\"},{\"sheet\":\"State Master\",\"cell\":\"B3\",\"value\":\"Ladakh\"}],\"output_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/work/kyc-intake-data-dictionary.xlsx\",\"overwrite\":true}",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/work/kyc-intake-data-dictionary.xlsx\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/work/kyc-intake-data-dictionary.xlsx\", \"tables_extended\": [], \"cells_written\": 2, \"formula_cells\": 0, \"sheets_edited\": [\"State Master\"], \"validation\": \"passed: 0 CRITICAL structural findings (the file is only written if this holds)\", \"parts\": {\"c"
+    },
+    {
+      "name": "safexl_verify",
+      "error": false,
+      "kind": null,
+      "args": "{\"before_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/ref/kyc-intake-data-dictionary.xlsx\",\"after_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/work/kyc-intake-data-dictionary.xlsx\"}",
+      "result": "{\"ok\": true, \"verdict\": \"intact\", \"valid\": true, \"lost_features\": [], \"rebuilt\": false, \"parts\": {\"unchanged\": 39, \"changed\": [\"xl/workbook.xml\", \"xl/worksheets/sheet26.xml\"], \"added\": [], \"removed\": []}, \"before_sha256\": \"a6a7bf557df8048108502973ecedc31d96f27d09ac166eedeae32fc96c13e8db\", \"after_sha256\": \"e85b0c71b68ed5a3afbfe9f80ed1d70efd4db739f7f5aad8115e21eaca46d13c\", \"reasons\": [], \"added_risk\": [], \"cell_changes\": {\"State Master\": {\"values_changed\": 0, \"formulas_changed\": 0, \"styles_changed\": 0, \"added\": 2, \"removed\": 0, \"rows_removed\": 0, \"cells_changed\": 2, \"complete\": true, \"rows_inser"
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/kyc-t4-insert-ladakh-state/B/3/work/kyc-intake-data-dictionary.xlsx\",\"sheet\":\"State Master\",\"cell_range\":\"A1:C8\"}",
+      "result": "{\"ok\": true, \"sheets\": [\"KYC HEADER\", \"KYC\", \"ADDL INFO\", \"KYC TRAILER\", \"KYC Update Type\", \"Addtl KYC Update Type\", \"Entity Type\", \"Document & EXEMPTED &  PAN COPY\", \"IPV Status\", \"Identity Proof\", \"Address Proof\", \"Gender\", \"Marital Status\", \"Exempt Category\", \"Company Type\", \"Nationality\", \"Residential Status\", \"NRI Residential Status Proof\", \"Occupation\", \"Income Slab\", \"PEP Status\", \"KYC Status\", \"Rejection Reasons\", \"Relationship Status\", \"Document submission Details\", \"State Master\", \"Country Master\", \"Country Master (2)\", \"Dump Type\", \"KYC_MODE\"], \"sheet\": \"State Master\", \"dims\": \"A1:C"
+    }
+  ],
+  "api_retries": [
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}",
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}",
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}",
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}",
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}",
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}"
+  ],
+  "tokens_in": 77403,
+  "tokens_out": 2483,
+  "steps": 7,
+  "first_tool_call_s": 3.55,
+  "final_text": "Done. Ladakh is now in the State Master list, right after Jammu and Kashmir:\n\n- Inserted one blank row at row 3 of **State Master** (all existing rows shifted down; no formulas referenced those rows, so nothing needed rewriting).\n- Wrote `A3` = **038** (stored as text, matching the text-typed codes in the column) and `B3` = **Ladakh**.\n\nVerification:\n- `safexl_verify` vs. the pristine copy: verdict **intact** — only `xl/workbook.xml` and the State Master sheet XML changed; all other 39 parts byte-identical, no features lost.\n- Re-read of the sheet confirms the order: `001 Jammu and Kashmir → 038 Ladakh → 002 Himachal Pradesh → …`, sheet now A1:C39.\n\nNote: the other state entries keep their original codes (002–037) and were not renumbered, so the list now contains both the legacy 001–037 sequence and the new 038, exactly as requested.",
+  "stop_reason": "finished",
+  "wall_seconds": 273.19,
+  "finished_at": "2026-10-04T06:48:11Z",
+  "tool_call_count": 7,
+  "tool_error_count": 0
+}

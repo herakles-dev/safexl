@@ -1,0 +1,54 @@
+{
+  "task_id": "parking-t5-rename-detailed-report",
+  "arm": "B",
+  "rep": 1,
+  "workbook": "research/xlsx-bench/corpus/parking-study-report.xlsm",
+  "prompt": "Rename the 'Detailed_report' tab to 'Detail Report'.",
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "provider": "openrouter",
+  "started_at": "2026-10-04T05:36:56Z",
+  "output_files": [],
+  "contamination": {
+    "contaminated": false,
+    "evidence": []
+  },
+  "timed_out": false,
+  "tool_calls": [
+    {
+      "name": "safexl_inspect",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\"}",
+      "result": "{\"ok\": true, \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\", \"sheets\": [{\"name\": \"CCSInfo\", \"sheet_id\": \"4\", \"declared_dimension\": \"A1:Z96\", \"actual_used_range\": \"A1:Z96\", \"dimension_matches\": true, \"formula_count\": 0, \"data_validation_native\": 0, \"data_validation_extlst\": 0, \"conditional_formatting_native\": 0, \"conditional_formatting_extlst\": 0}, {\"name\": \"General\", \"sheet_id\": \"5\", \"declared_dimension\": \"A1:IR264\", \"actual_used_range\": \"A1:I"
+    },
+    {
+      "name": "safexl_rename_sheet",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\",\"old_name\":\"Detailed_report\",\"new_name\":\"Detail Report\",\"output_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\",\"overwrite\":true}",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\", \"old_name\": \"Detailed_report\", \"new_name\": \"Detail Report\", \"parts\": {\"changed\": [\"xl/charts/chart1.xml\", \"xl/workbook.xml\"], \"added\": [], \"removed\": [], \"unchanged_count\""
+    },
+    {
+      "name": "safexl_verify",
+      "error": false,
+      "kind": null,
+      "args": "{\"before_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/parking-t5-rename-detailed-report/B/1/ref/parking-study-report.xlsm\",\"after_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/parking-t5-rename-detailed-report/B/1/work/parking-study-report.xlsm\"}",
+      "result": "{\"ok\": true, \"verdict\": \"intact\", \"valid\": true, \"lost_features\": [], \"rebuilt\": false, \"parts\": {\"unchanged\": 47, \"changed\": [\"xl/charts/chart1.xml\", \"xl/workbook.xml\"], \"added\": [], \"removed\": []}, \"before_sha256\": \"2cf7459faa9d15c1deef4c410fc05142c4f57ebee622668e2526d7b3e34e08fa\", \"after_sha256\": \"d918bf3e07c522c440eaeb671a2533f3908e88f787d9228cdd06dd2575cb0a38\", \"reasons\": []}"
+    }
+  ],
+  "api_retries": [
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}",
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}",
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}"
+  ],
+  "tokens_in": 52258,
+  "tokens_out": 880,
+  "steps": 4,
+  "first_tool_call_s": 107.68,
+  "final_text": "Renamed the 'Detailed_report' worksheet to 'Detail Report'. The workbook remains intact with all features (charts, pivot tables, data validation, conditional formatting, and VBA macros) preserved. Only the worksheet name and corresponding formula references were updated.",
+  "stop_reason": "finished",
+  "wall_seconds": 115.71,
+  "finished_at": "2026-10-04T05:38:52Z",
+  "tool_call_count": 3,
+  "tool_error_count": 0
+}

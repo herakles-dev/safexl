@@ -1,0 +1,73 @@
+{
+  "generated_by": "hashes taken from the files used by packages/safexl/tests; each upstream URL was fetched and its bytes compared",
+  "sources_used": {
+    "apache/poi test-data/spreadsheet": {
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/apache/poi/blob/942d95d85b15d0dfdb3bc9ba1b4f273f277757c8/legal/LICENSE",
+      "notice_url": "https://github.com/apache/poi/blob/942d95d85b15d0dfdb3bc9ba1b4f273f277757c8/legal/NOTICE",
+      "pinned_commit": "942d95d85b15d0dfdb3bc9ba1b4f273f277757c8"
+    }
+  },
+  "fixtures": [
+    {
+      "file": "DataValidations-49244.xlsx",
+      "source_url": "https://raw.githubusercontent.com/apache/poi/942d95d85b15d0dfdb3bc9ba1b4f273f277757c8/test-data/spreadsheet/DataValidations-49244.xlsx",
+      "source_repo": "apache/poi",
+      "source_path": "test-data/spreadsheet/DataValidations-49244.xlsx",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/apache/poi/blob/942d95d85b15d0dfdb3bc9ba1b4f273f277757c8/legal/LICENSE",
+      "sha256": "8066b12c878d74aa35b55b22dc9daba9a56e91332a35cf96c4fc0f6af6bd3bd1",
+      "size_bytes": 10705
+    },
+    {
+      "file": "ExcelPivotTableSample.xlsx",
+      "source_url": "https://raw.githubusercontent.com/apache/poi/942d95d85b15d0dfdb3bc9ba1b4f273f277757c8/test-data/spreadsheet/ExcelPivotTableSample.xlsx",
+      "source_repo": "apache/poi",
+      "source_path": "test-data/spreadsheet/ExcelPivotTableSample.xlsx",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/apache/poi/blob/942d95d85b15d0dfdb3bc9ba1b4f273f277757c8/legal/LICENSE",
+      "sha256": "f0ef1d61c9f3d8b27b18a876b8e24676314c6450ed64a725a7bfaa603fdd67e3",
+      "size_bytes": 19460
+    },
+    {
+      "file": "NewStyleConditionalFormattings.xlsx",
+      "source_url": "https://raw.githubusercontent.com/apache/poi/942d95d85b15d0dfdb3bc9ba1b4f273f277757c8/test-data/spreadsheet/NewStyleConditionalFormattings.xlsx",
+      "source_repo": "apache/poi",
+      "source_path": "test-data/spreadsheet/NewStyleConditionalFormattings.xlsx",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/apache/poi/blob/942d95d85b15d0dfdb3bc9ba1b4f273f277757c8/legal/LICENSE",
+      "sha256": "1e97af3b87636bd0a759c25439a21b928c2ff3b9a3c57ca49ae24cb1ccdb7e2f",
+      "size_bytes": 13378
+    },
+    {
+      "file": "SimpleMacro.xlsm",
+      "source_url": "https://raw.githubusercontent.com/apache/poi/942d95d85b15d0dfdb3bc9ba1b4f273f277757c8/test-data/spreadsheet/SimpleMacro.xlsm",
+      "source_repo": "apache/poi",
+      "source_path": "test-data/spreadsheet/SimpleMacro.xlsm",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/apache/poi/blob/942d95d85b15d0dfdb3bc9ba1b4f273f277757c8/legal/LICENSE",
+      "sha256": "f76c986f4ebc25c2cc57c088b2511a1269f4bd61d6223a2ab58db351da348ba6",
+      "size_bytes": 13796
+    },
+    {
+      "file": "WithChart.xlsx",
+      "source_url": "https://raw.githubusercontent.com/apache/poi/942d95d85b15d0dfdb3bc9ba1b4f273f277757c8/test-data/spreadsheet/WithChart.xlsx",
+      "source_repo": "apache/poi",
+      "source_path": "test-data/spreadsheet/WithChart.xlsx",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/apache/poi/blob/942d95d85b15d0dfdb3bc9ba1b4f273f277757c8/legal/LICENSE",
+      "sha256": "51f27aabf7417f5aaa0542857b6bb56a92d4afbabdc5c63f084c06f92b67429d",
+      "size_bytes": 10138
+    },
+    {
+      "file": "WithDrawing.xlsx",
+      "source_url": "https://raw.githubusercontent.com/apache/poi/942d95d85b15d0dfdb3bc9ba1b4f273f277757c8/test-data/spreadsheet/WithDrawing.xlsx",
+      "source_repo": "apache/poi",
+      "source_path": "test-data/spreadsheet/WithDrawing.xlsx",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/apache/poi/blob/942d95d85b15d0dfdb3bc9ba1b4f273f277757c8/legal/LICENSE",
+      "sha256": "97b1ab359d6aecbe37864f30c85106e386f0a19bea8f290103927362a2701066",
+      "size_bytes": 101696
+    }
+  ]
+}

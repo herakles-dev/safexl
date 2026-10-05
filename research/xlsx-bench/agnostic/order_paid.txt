@@ -1,0 +1,6 @@
+openrouter-paid openai/gpt-oss-120b
+openrouter-paid openai/gpt-oss-20b
+openrouter-paid anthropic/claude-haiku-4.5
+openrouter-paid deepseek/deepseek-v4-flash
+openrouter-paid mistralai/mistral-small-3.2-24b-instruct
+openrouter-paid deepseek/deepseek-v3.2

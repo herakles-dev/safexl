@@ -1,0 +1,75 @@
+{
+  "task_id": "pivotrpt-t4-insert-games-row",
+  "arm": "B",
+  "rep": 1,
+  "workbook": "research/xlsx-bench/corpus/pivot-chart-report.xlsx",
+  "prompt": "Add a new row to the raw data sheet for a Games category in 2006: cost 450000, revenue 612000. Put it right after the 2006 Electronics row.",
+  "model": "qwen/qwen3.8-27b:free",
+  "provider": "openrouter",
+  "started_at": "2026-10-04T05:38:52Z",
+  "output_files": [],
+  "contamination": {
+    "contaminated": false,
+    "evidence": []
+  },
+  "timed_out": false,
+  "tool_calls": [
+    {
+      "name": "safexl_inspect",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/pivotrpt-t4-insert-games-row/B/1/work/pivot-chart-report.xlsx\"}",
+      "result": "{\"ok\": true, \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/pivotrpt-t4-insert-games-row/B/1/work/pivot-chart-report.xlsx\", \"sheets\": [{\"name\": \"Sheet1\", \"sheet_id\": \"1\", \"declared_dimension\": \"A1:F13\", \"actual_used_range\": \"A1:F13\", \"dimension_matches\": true, \"formula_count\": 0, \"data_validation_native\": 0, \"data_validation_extlst\": 0, \"conditional_formatting_native\": 0, \"conditional_formatting_extlst\": 0}, {\"name\": \"Sheet6\", \"sheet_id\": \"6\", \"declared_dimension\": \"A3:G9\", \"actual_used_range\": \"A3:G9\", \"dimension_matches\": true"
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/pivotrpt-t4-insert-games-row/B/1/work/pivot-chart-report.xlsx\",\"sheet\":\"Sheet1\",\"cell_range\":\"A1:F13\"}",
+      "result": "{\"ok\": true, \"sheets\": [\"Sheet1\", \"Sheet6\", \"Sheet5\", \"Sheet4\", \"Sheet3\", \"Sheet2\", \"Chart2\"], \"sheet\": \"Sheet1\", \"dims\": \"A1:D13\", \"cells\": [{\"ref\": \"A1\", \"type\": \"s\", \"value\": \"Year\"}, {\"ref\": \"B1\", \"type\": \"s\", \"value\": \"Category\"}, {\"ref\": \"C1\", \"type\": \"s\", \"value\": \"Cost\"}, {\"ref\": \"D1\", \"type\": \"s\", \"value\": \"Revenue\"}, {\"ref\": \"A2\", \"type\": \"n\", \"value\": 2005}, {\"ref\": \"B2\", \"type\": \"s\", \"value\": \"Books\"}, {\"ref\": \"C2\", \"type\": \"n\", \"value\": 889017}, {\"ref\": \"D2\", \"type\": \"n\", \"value\": 1140362.5}, {\"ref\": \"A3\", \"type\": \"n\", \"value\": 2005}, {\"ref\": \"B3\", \"type\": \"s\", \"value\": \"Electroni"
+    },
+    {
+      "name": "safexl_insert_rows",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/pivotrpt-t4-insert-games-row/B/1/work/pivot-chart-report.xlsx\",\"sheet_name\":\"Sheet1\",\"row\":8,\"count\":1,\"output_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/pivotrpt-t4-insert-games-row/B/1/work/pivot-chart-report.xlsx\",\"overwrite\":true}",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/pivotrpt-t4-insert-games-row/B/1/work/pivot-chart-report.xlsx\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/pivotrpt-t4-insert-games-row/B/1/work/pivot-chart-report.xlsx\", \"sheet\": \"Sheet1\", \"row\": 8, \"count\": 1, \"parts\": {\"changed\": [\"xl/pivotCache/pivotCacheDefinition1.xml\", \"xl/pivotCache/pivotCacheDefinition2.xml\", \"xl/pivotCache/pivotCacheDefinition3.xml\", \"xl/workbook.xml\", \"xl/work"
+    },
+    {
+      "name": "safexl_edit",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/pivotrpt-t4-insert-games-row/B/1/work/pivot-chart-report.xlsx\",\"changes\":[{\"sheet\":\"Sheet1\",\"cell\":\"A8\",\"value\":2006},{\"sheet\":\"Sheet1\",\"cell\":\"B8\",\"value\":\"Games\"},{\"sheet\":\"Sheet1\",\"cell\":\"C8\",\"value\":450000},{\"sheet\":\"Sheet1\",\"cell\":\"D8\",\"value\":612000}],\"output_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/pivotrpt-t4-insert-games-row/B/1/work/pivot-chart-report.xlsx\",\"overwrite\":true}",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/pivotrpt-t4-insert-games-row/B/1/work/pivot-chart-report.xlsx\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/pivotrpt-t4-insert-games-row/B/1/work/pivot-chart-report.xlsx\", \"tables_extended\": [], \"cells_written\": 4, \"formula_cells\": 0, \"sheets_edited\": [\"Sheet1\"], \"validation\": \"passed: 0 CRITICAL structural findings (the file is only written if this holds)\", \"parts\": {\"changed\": [\"xl/work"
+    },
+    {
+      "name": "safexl_verify",
+      "error": false,
+      "kind": null,
+      "args": "{\"before_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/pivotrpt-t4-insert-games-row/B/1/ref/pivot-chart-report.xlsx\",\"after_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/pivotrpt-t4-insert-games-row/B/1/work/pivot-chart-report.xlsx\"}",
+      "result": "{\"ok\": true, \"verdict\": \"intact\", \"valid\": true, \"lost_features\": [], \"rebuilt\": false, \"parts\": {\"unchanged\": 39, \"changed\": [\"xl/pivotCache/pivotCacheDefinition1.xml\", \"xl/pivotCache/pivotCacheDefinition2.xml\", \"xl/pivotCache/pivotCacheDefinition3.xml\", \"xl/workbook.xml\", \"xl/worksheets/sheet1.xml\"], \"added\": [], \"removed\": []}, \"before_sha256\": \"792b9f21afdb6b8b1f82345864ee15d55c17a1b54d71c250e82c87304385d362\", \"after_sha256\": \"9e8b7277cf29688dfdb55890abb7b387c7040d908b61523f74492220f1926bb7\", \"reasons\": []}"
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/qwen_qwen3.8-27b_free/pivotrpt-t4-insert-games-row/B/1/work/pivot-chart-report.xlsx\",\"sheet\":\"Sheet1\",\"cell_range\":\"A6:D14\"}",
+      "result": "{\"ok\": true, \"sheets\": [\"Sheet1\", \"Sheet6\", \"Sheet5\", \"Sheet4\", \"Sheet3\", \"Sheet2\", \"Chart2\"], \"sheet\": \"Sheet1\", \"dims\": \"A1:D14\", \"cells\": [{\"ref\": \"A6\", \"type\": \"n\", \"value\": 2006}, {\"ref\": \"B6\", \"type\": \"s\", \"value\": \"Books\"}, {\"ref\": \"C6\", \"type\": \"n\", \"value\": 1025796}, {\"ref\": \"D6\", \"type\": \"n\", \"value\": 1320585.375}, {\"ref\": \"A7\", \"type\": \"n\", \"value\": 2006}, {\"ref\": \"B7\", \"type\": \"s\", \"value\": \"Electronics\"}, {\"ref\": \"C7\", \"type\": \"n\", \"value\": 15910763}, {\"ref\": \"D7\", \"type\": \"n\", \"value\": 19299870}, {\"ref\": \"A8\", \"type\": \"n\", \"value\": 2006}, {\"ref\": \"B8\", \"type\": \"s\", \"value\": \"Game"
+    }
+  ],
+  "api_retries": [
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}",
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}",
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}"
+  ],
+  "tokens_in": 51728,
+  "tokens_out": 1677,
+  "steps": 6,
+  "first_tool_call_s": 3.09,
+  "final_text": "Done. Verified:\n\n- **New row 8 on Sheet1**: `2006 | Games | 450000 | 612000` — placed directly after the 2006 Electronics row (row 7).\n- The 2006 mMovies/MMusic rows and all 2007 rows shifted down correctly to rows 9–14.\n- `safexl_verify` verdict: **intact** — no lost features; the chart, pivot tables and all other sheets are byte-identical to the original.\n\nThe pivot tables still reflect the old data (caches aren't recalculated by the editor) — they'll refresh when the file is opened in Excel.",
+  "stop_reason": "finished",
+  "wall_seconds": 150.48,
+  "finished_at": "2026-10-04T05:41:22Z",
+  "tool_call_count": 6,
+  "tool_error_count": 0
+}

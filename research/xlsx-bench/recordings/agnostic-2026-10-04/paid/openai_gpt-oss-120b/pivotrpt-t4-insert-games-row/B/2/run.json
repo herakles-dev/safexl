@@ -1,0 +1,90 @@
+{
+  "task_id": "pivotrpt-t4-insert-games-row",
+  "arm": "B",
+  "rep": 2,
+  "workbook": "research/xlsx-bench/corpus/pivot-chart-report.xlsx",
+  "prompt": "Add a new row to the raw data sheet for a Games category in 2006: cost 450000, revenue 612000. Put it right after the 2006 Electronics row.",
+  "model": "openai/gpt-oss-120b",
+  "provider": "openrouter-paid",
+  "started_at": "2026-10-04T05:59:06Z",
+  "output_files": [],
+  "contamination": {
+    "contaminated": false,
+    "evidence": []
+  },
+  "timed_out": false,
+  "tool_calls": [
+    {
+      "name": "safexl_inspect",
+      "error": false,
+      "kind": null,
+      "args": "{\n  \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\"\n}",
+      "result": "{\"ok\": true, \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\", \"sheets\": [{\"name\": \"Sheet1\", \"sheet_id\": \"1\", \"declared_dimension\": \"A1:F13\", \"actual_used_range\": \"A1:F13\", \"dimension_matches\": true, \"formula_count\": 0, \"data_validation_native\": 0, \"data_validation_extlst\": 0, \"conditional_formatting_native\": 0, \"conditional_formatting_extlst\": 0}, {\"name\": \"Sheet6\", \"sheet_id\": \"6\", \"declared_dimension\": \"A3:G9\", \"actual_used_range\": \"A3:G9\", \"dimension_matches\": t"
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\n  \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\",\n  \"sheet\": \"Sheet4\",\n  \"cell_range\": \"A1:C30\"\n}",
+      "result": "{\"ok\": true, \"sheets\": [\"Sheet1\", \"Sheet6\", \"Sheet5\", \"Sheet4\", \"Sheet3\", \"Sheet2\", \"Chart2\"], \"sheet\": \"Sheet4\", \"dims\": \"A3:C21\", \"cells\": [{\"ref\": \"B3\", \"type\": \"s\", \"value\": \"Values\"}, {\"ref\": \"A4\", \"type\": \"s\", \"value\": \"Row Labels\"}, {\"ref\": \"B4\", \"type\": \"s\", \"value\": \"Sum of Cost\"}, {\"ref\": \"C4\", \"type\": \"s\", \"value\": \"Sum of Revenue\"}, {\"ref\": \"A5\", \"type\": \"s\", \"value\": \"Books\"}, {\"ref\": \"B5\", \"type\": \"n\", \"value\": 3133539}, {\"ref\": \"C5\", \"type\": \"n\", \"value\": 4024235}, {\"ref\": \"A6\", \"type\": \"n\", \"value\": 2005}, {\"ref\": \"B6\", \"type\": \"n\", \"value\": 889017}, {\"ref\": \"C6\", \"type\": \"n\", "
+    },
+    {
+      "name": "safexl_insert_rows",
+      "error": false,
+      "kind": null,
+      "args": "{\n  \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\",\n  \"sheet_name\": \"Sheet4\",\n  \"row\": 12,\n  \"count\": 1,\n  \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\",\n  \"overwrite\": true\n}",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\", \"sheet\": \"Sheet4\", \"row\": 12, \"count\": 1, \"parts\": {\"changed\": [\"xl/pivotTables/pivotTable3.xml\", \"xl/workbook.xml\", \"xl/worksheets/sheet4.xml\"], \"added\": [], \"removed\": [], \"unchanged_count\": 41}, \"validation\": \""
+    },
+    {
+      "name": "safexl_insert_rows",
+      "error": false,
+      "kind": null,
+      "args": "{\n  \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\",\n  \"sheet_name\": \"Sheet4\",\n  \"row\": 12,\n  \"count\": 2,\n  \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\",\n  \"overwrite\": true\n}",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\", \"sheet\": \"Sheet4\", \"row\": 12, \"count\": 2, \"parts\": {\"changed\": [\"xl/pivotTables/pivotTable3.xml\", \"xl/worksheets/sheet4.xml\"], \"added\": [], \"removed\": [], \"unchanged_count\": 42}, \"validation\": \"passed: 0 CRITICAL "
+    },
+    {
+      "name": "safexl_salvage",
+      "error": false,
+      "kind": null,
+      "args": "{\n  \"original_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/ref/pivot-chart-report.xlsx\",\n  \"damaged_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\",\n  \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\",\n  \"overwrite\": true,\n  \"force",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/ref/pivot-chart-report.xlsx\", \"status\": \"nothing_to_do\", \"applied\": [], \"skipped\": [], \"structural\": {\"detected\": []}, \"parts\": {\"unchanged\": 0, \"changed\": []}, \"tables\": [], \"verify\": null, \"gate\": {\"verdict\": \"intact\", \"lost_features\": []}, \"output_written\": false, \"message\": \"The damaged file is already intact (nothing was lost); keep it as is. No output file was written. Pass force=true to rebuild from the original anyway.\""
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\n  \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\",\n  \"sheet\": \"Sheet4\",\n  \"cell_range\": \"A8:C20\"\n}",
+      "result": "{\"ok\": true, \"sheets\": [\"Sheet1\", \"Sheet6\", \"Sheet5\", \"Sheet4\", \"Sheet3\", \"Sheet2\", \"Chart2\"], \"sheet\": \"Sheet4\", \"dims\": \"A3:C24\", \"cells\": [{\"ref\": \"A8\", \"type\": \"n\", \"value\": 2007}, {\"ref\": \"B8\", \"type\": \"n\", \"value\": 1218726}, {\"ref\": \"C8\", \"type\": \"n\", \"value\": 1563287.125}, {\"ref\": \"A9\", \"type\": \"s\", \"value\": \"Electronics\"}, {\"ref\": \"B9\", \"type\": \"n\", \"value\": 48550050}, {\"ref\": \"C9\", \"type\": \"n\", \"value\": 58837793}, {\"ref\": \"A10\", \"type\": \"n\", \"value\": 2005}, {\"ref\": \"B10\", \"type\": \"n\", \"value\": 13114909}, {\"ref\": \"C10\", \"type\": \"n\", \"value\": 15883893}, {\"ref\": \"A11\", \"type\": \"n\", \"valu"
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\n  \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\",\n  \"sheet\": \"Sheet4\",\n  \"cell_range\": \"A10:C20\"\n}",
+      "result": "{\"ok\": true, \"sheets\": [\"Sheet1\", \"Sheet6\", \"Sheet5\", \"Sheet4\", \"Sheet3\", \"Sheet2\", \"Chart2\"], \"sheet\": \"Sheet4\", \"dims\": \"A3:C24\", \"cells\": [{\"ref\": \"A10\", \"type\": \"n\", \"value\": 2005}, {\"ref\": \"B10\", \"type\": \"n\", \"value\": 13114909}, {\"ref\": \"C10\", \"type\": \"n\", \"value\": 15883893}, {\"ref\": \"A11\", \"type\": \"n\", \"value\": 2006}, {\"ref\": \"B11\", \"type\": \"n\", \"value\": 15910763}, {\"ref\": \"C11\", \"type\": \"n\", \"value\": 19299870}, {\"ref\": \"A15\", \"type\": \"n\", \"value\": 2007}, {\"ref\": \"B15\", \"type\": \"n\", \"value\": 19524378}, {\"ref\": \"C15\", \"type\": \"n\", \"value\": 23654030}, {\"ref\": \"A16\", \"type\": \"s\", \"value\": \""
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\n  \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/paid/openai_gpt-oss-120b/pivotrpt-t4-insert-games-row/B/2/work/pivot-chart-report.xlsx\",\n  \"sheet\": \"Sheet4\",\n  \"cell_range\": \"A1:C30\"\n}",
+      "result": "{\"ok\": true, \"sheets\": [\"Sheet1\", \"Sheet6\", \"Sheet5\", \"Sheet4\", \"Sheet3\", \"Sheet2\", \"Chart2\"], \"sheet\": \"Sheet4\", \"dims\": \"A3:C24\", \"cells\": [{\"ref\": \"B3\", \"type\": \"s\", \"value\": \"Values\"}, {\"ref\": \"A4\", \"type\": \"s\", \"value\": \"Row Labels\"}, {\"ref\": \"B4\", \"type\": \"s\", \"value\": \"Sum of Cost\"}, {\"ref\": \"C4\", \"type\": \"s\", \"value\": \"Sum of Revenue\"}, {\"ref\": \"A5\", \"type\": \"s\", \"value\": \"Books\"}, {\"ref\": \"B5\", \"type\": \"n\", \"value\": 3133539}, {\"ref\": \"C5\", \"type\": \"n\", \"value\": 4024235}, {\"ref\": \"A6\", \"type\": \"n\", \"value\": 2005}, {\"ref\": \"B6\", \"type\": \"n\", \"value\": 889017}, {\"ref\": \"C6\", \"type\": \"n\", "
+    }
+  ],
+  "api_retries": [],
+  "tokens_in": 66827,
+  "tokens_out": 7187,
+  "steps": 9,
+  "first_tool_call_s": 12.07,
+  "final_text": "",
+  "stop_reason": "empty_reply",
+  "cost_usd": 0.003534647,
+  "providers": [
+    "DekaLLM",
+    "DeepInfra"
+  ],
+  "wall_seconds": 212.48,
+  "finished_at": "2026-10-04T06:02:39Z",
+  "tool_call_count": 8,
+  "tool_error_count": 0
+}

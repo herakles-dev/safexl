@@ -1,0 +1,82 @@
+{
+  "task_id": "kyc-t4-insert-ladakh-state",
+  "arm": "B",
+  "rep": 1,
+  "workbook": "research/xlsx-bench/corpus/kyc-intake-data-dictionary.xlsx",
+  "prompt": "Add Ladakh to the state list, right after Jammu and Kashmir, with code 038.",
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "provider": "openrouter",
+  "started_at": "2026-10-04T05:34:51Z",
+  "output_files": [],
+  "contamination": {
+    "contaminated": false,
+    "evidence": []
+  },
+  "timed_out": false,
+  "tool_calls": [
+    {
+      "name": "safexl_inspect",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/work/kyc-intake-data-dictionary.xlsx\"}",
+      "result": "{\"ok\": true, \"path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/work/kyc-intake-data-dictionary.xlsx\", \"sheets\": [{\"name\": \"KYC HEADER\", \"sheet_id\": \"24\", \"declared_dimension\": \"A1:I7\", \"actual_used_range\": \"A1:I7\", \"dimension_matches\": true, \"formula_count\": 1, \"data_validation_native\": 0, \"data_validation_extlst\": 0, \"conditional_formatting_native\": 0, \"conditional_formatting_extlst\": 0}, {\"name\": \"KYC\", \"sheet_id\": \"25\", \"declared_dimension\": \"A1:K93\", \"actual_used_range\": \"A1:K93\","
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/work/kyc-intake-data-dictionary.xlsx\",\"sheet\":\"State Master\",\"cell_range\":\"A1:C38\",\"max_cells\":200,\"formulas\":true}",
+      "result": "{\"ok\": true, \"sheets\": [\"KYC HEADER\", \"KYC\", \"ADDL INFO\", \"KYC TRAILER\", \"KYC Update Type\", \"Addtl KYC Update Type\", \"Entity Type\", \"Document & EXEMPTED &  PAN COPY\", \"IPV Status\", \"Identity Proof\", \"Address Proof\", \"Gender\", \"Marital Status\", \"Exempt Category\", \"Company Type\", \"Nationality\", \"Residential Status\", \"NRI Residential Status Proof\", \"Occupation\", \"Income Slab\", \"PEP Status\", \"KYC Status\", \"Rejection Reasons\", \"Relationship Status\", \"Document submission Details\", \"State Master\", \"Country Master\", \"Country Master (2)\", \"Dump Type\", \"KYC_MODE\"], \"sheet\": \"State Master\", \"dims\": \"A1:C"
+    },
+    {
+      "name": "safexl_insert_rows",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/work/kyc-intake-data-dictionary.xlsx\",\"sheet_name\":\"State Master\",\"row\":3,\"count\":1,\"output_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/work/kyc-intake-data-dictionary.xlsx\",\"overwrite\":true}",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/work/kyc-intake-data-dictionary.xlsx\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/work/kyc-intake-data-dictionary.xlsx\", \"sheet\": \"State Master\", \"row\": 3, \"count\": 1, \"parts\": {\"changed\": [\"xl/workbook.xml\", \"xl/worksheets/sheet26.xml\"], \"added\": [], \"removed\": [], \"unchanged_count\": 39}, \"va"
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/work/kyc-intake-data-dictionary.xlsx\",\"sheet\":\"State Master\",\"cell_range\":\"A1:C5\",\"max_cells\":200,\"formulas\":true}",
+      "result": "{\"ok\": true, \"sheets\": [\"KYC HEADER\", \"KYC\", \"ADDL INFO\", \"KYC TRAILER\", \"KYC Update Type\", \"Addtl KYC Update Type\", \"Entity Type\", \"Document & EXEMPTED &  PAN COPY\", \"IPV Status\", \"Identity Proof\", \"Address Proof\", \"Gender\", \"Marital Status\", \"Exempt Category\", \"Company Type\", \"Nationality\", \"Residential Status\", \"NRI Residential Status Proof\", \"Occupation\", \"Income Slab\", \"PEP Status\", \"KYC Status\", \"Rejection Reasons\", \"Relationship Status\", \"Document submission Details\", \"State Master\", \"Country Master\", \"Country Master (2)\", \"Dump Type\", \"KYC_MODE\"], \"sheet\": \"State Master\", \"dims\": \"A1:C"
+    },
+    {
+      "name": "safexl_edit",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/work/kyc-intake-data-dictionary.xlsx\",\"changes\":[{\"sheet\":\"State Master\",\"cell\":\"A3\",\"value\":\"038\"},{\"sheet\":\"State Master\",\"cell\":\"B3\",\"value\":\"Ladakh\"}],\"output_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/work/kyc-intake-data-dictionary.xlsx\",\"overwrite\":true}",
+      "result": "{\"ok\": true, \"source_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/work/kyc-intake-data-dictionary.xlsx\", \"output_path\": \"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/work/kyc-intake-data-dictionary.xlsx\", \"tables_extended\": [], \"cells_written\": 2, \"formula_cells\": 0, \"sheets_edited\": [\"State Master\"], \"validation\": \"passed: 0 CRITICAL structural findings (the file is only wri"
+    },
+    {
+      "name": "safexl_verify",
+      "error": false,
+      "kind": null,
+      "args": "{\"before_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/ref/kyc-intake-data-dictionary.xlsx\",\"after_path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/work/kyc-intake-data-dictionary.xlsx\"}",
+      "result": "{\"ok\": true, \"verdict\": \"intact\", \"valid\": true, \"lost_features\": [], \"rebuilt\": false, \"parts\": {\"unchanged\": 39, \"changed\": [\"xl/workbook.xml\", \"xl/worksheets/sheet26.xml\"], \"added\": [], \"removed\": []}, \"before_sha256\": \"a6a7bf557df8048108502973ecedc31d96f27d09ac166eedeae32fc96c13e8db\", \"after_sha256\": \"e85b0c71b68ed5a3afbfe9f80ed1d70efd4db739f7f5aad8115e21eaca46d13c\", \"reasons\": []}"
+    },
+    {
+      "name": "safexl_view",
+      "error": false,
+      "kind": null,
+      "args": "{\"path\":\"research/xlsx-bench/recordings/agnostic-2026-10-04/nvidia_nemotron-3-super-120b-a12b_free/kyc-t4-insert-ladakh-state/B/1/work/kyc-intake-data-dictionary.xlsx\",\"sheet\":\"State Master\",\"cell_range\":\"A1:B5\",\"max_cells\":200,\"formulas\":true}",
+      "result": "{\"ok\": true, \"sheets\": [\"KYC HEADER\", \"KYC\", \"ADDL INFO\", \"KYC TRAILER\", \"KYC Update Type\", \"Addtl KYC Update Type\", \"Entity Type\", \"Document & EXEMPTED &  PAN COPY\", \"IPV Status\", \"Identity Proof\", \"Address Proof\", \"Gender\", \"Marital Status\", \"Exempt Category\", \"Company Type\", \"Nationality\", \"Residential Status\", \"NRI Residential Status Proof\", \"Occupation\", \"Income Slab\", \"PEP Status\", \"KYC Status\", \"Rejection Reasons\", \"Relationship Status\", \"Document submission Details\", \"State Master\", \"Country Master\", \"Country Master (2)\", \"Dump Type\", \"KYC_MODE\"], \"sheet\": \"State Master\", \"dims\": \"A1:C"
+    }
+  ],
+  "api_retries": [
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}",
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}",
+    "HTTP 503: {\"detail\":\"No available keys for provider 'openrouter' (all in backoff or none configured)\"}"
+  ],
+  "tokens_in": 97722,
+  "tokens_out": 2339,
+  "steps": 8,
+  "first_tool_call_s": 107.25,
+  "final_text": "I inserted a new row for Ladakh with code 038 immediately after Jammu and Kashmir in the State Master sheet. The workbook remains intact with all original features preserved. The change is limited to the State Master sheet: one row inserted at position 3, and cells A3 and B3 updated with values \"038\" and \"Ladakh\" respectively. All other sheets, formulas, charts, pivot tables, data validation, conditional formatting, and any macros remain byte-identical to the original.",
+  "stop_reason": "finished",
+  "wall_seconds": 124.67,
+  "finished_at": "2026-10-04T05:36:56Z",
+  "tool_call_count": 7,
+  "tool_error_count": 0
+}

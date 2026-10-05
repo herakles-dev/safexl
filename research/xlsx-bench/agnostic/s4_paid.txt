@@ -1,0 +1,3 @@
+openrouter-paid deepseek/deepseek-v4-flash
+openrouter-paid openai/gpt-oss-120b
+openrouter-paid mistralai/mistral-small-3.2-24b-instruct

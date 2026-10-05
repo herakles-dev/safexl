@@ -1,0 +1,394 @@
+[
+  {
+    "id": "benefits-t4-insert-duplicate-exclusion",
+    "workbook": "research/xlsx-bench/corpus/benefits-contribution-calculator.xlsm",
+    "tier": 4,
+    "kind": "insert_row",
+    "prompt": "We also need to exclude duplicate records from the sample-size reconciliation on the Enrollment Restrictions tab: add a new line 'Minus Duplicate Records' for -50, right after the 'Minus Gender=\"U\"' line and before the final count.",
+    "expect": {
+      "text_cells": [
+        {
+          "sheet": "Enrollment Restrictions",
+          "ref": "B29",
+          "value": "Minus Duplicate Records"
+        },
+        {
+          "sheet": "Enrollment Restrictions",
+          "ref": "B30",
+          "value": "Final Count"
+        }
+      ],
+      "cells": [
+        {
+          "sheet": "Enrollment Restrictions",
+          "ref": "C29",
+          "value": -50.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Enrollment Restrictions",
+          "ref": "C30",
+          "value": 2303508.0,
+          "tol": 0.5
+        }
+      ],
+      "formulas": [
+        {
+          "sheet": "Enrollment Restrictions",
+          "ref": "C30",
+          "contains": "SUM("
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "vba",
+      "data_validations",
+      "defined_names",
+      "merged_cells",
+      "protection",
+      "frozen_panes"
+    ],
+    "notes": "Original rows: 25='All Members' 2333641, 26='Minus Zero Spending and Negative AV' -28312, 27='Minus Imputed Coinsurance Restriction' -1616, 28='Minus Gender=\"U\"' -155, 29='Final Count' =SUM(C25:C28)=2303558. Inserting a new row between 28 and 29 makes the new line row29 and pushes 'Final Count' to row30; a correct insert expands the SUM to C25:C29 automatically. New Final Count = 2333641-28312-1616-155-50 = 2303508. The sheet's merged cells (all in rows 5-16) and the workbook's DV gates (all on 'MV Calculator', untouched) sit well above/outside row 24-30, so they are unaffected by this insert."
+  },
+  {
+    "id": "structrefs-t4-add-guam-to-dropdowns",
+    "workbook": "research/xlsx-bench/corpus/structured-refs-lookup-tool.xlsx",
+    "tier": 4,
+    "kind": "insert_row",
+    "prompt": "Add Guam as a new option in the state dropdowns on the 'dropdowns' tab — it needs to show up both in the plain state list and in the state-or-All-States list, in alphabetical order.",
+    "expect": {
+      "text_cells": [
+        {
+          "sheet": "dropdowns",
+          "ref": "A13",
+          "value": "Guam"
+        },
+        {
+          "sheet": "dropdowns",
+          "ref": "A14",
+          "value": "Hawaii"
+        },
+        {
+          "sheet": "dropdowns",
+          "ref": "C14",
+          "value": "Guam"
+        },
+        {
+          "sheet": "dropdowns",
+          "ref": "C15",
+          "value": "Hawaii"
+        }
+      ],
+      "defined_names": {
+        "state": "dropdowns!$A$2:$A$54",
+        "states": "dropdowns!$C$2:$C$55"
+      },
+      "no_new_errors": true
+    },
+    "preserve": [
+      "charts",
+      "tables",
+      "conditional_formatting",
+      "data_validations",
+      "defined_names",
+      "external_links",
+      "merged_cells"
+    ],
+    "notes": "This workbook keeps two independent, row-offset copies of the state list on 'dropdowns': column A (defined name 'state' = $A$2:$A$53, 52 states, no 'All States') and column C (defined name 'states' = $C$2:$C$54, 53 entries, 'All States' first then the same 52 states) -- C is shifted one row below A because of that extra header entry. Alphabetically 'Guam' falls between 'Georgia' and 'Hawaii' in both lists: in column A that's between A12 (Georgia) and old A13 (Hawaii) -> new A13='Guam', Hawaii shifts to A14; in column C that's between C13 (Georgia) and old C14 (Hawaii) -> new C14='Guam', Hawaii shifts to C15. A single whole-row insert would NOT correctly place 'Guam' in both columns at once (they're offset by one row), so this requires two independent column-scoped inserts. Each defined name's range grows by exactly one cell: 'state' $A$2:$A$53 -> $A$2:$A$54; 'states' $C$2:$C$54 -> $C$2:$C$55. The Category list (E1:G13) and droptable/dropdown named ranges live entirely above row 14 in columns E:G, so a correct (column-scoped) edit leaves them untouched; a naive full-row insert at row13 or row14 would corrupt them, which this task tests for indirectly via the merged/defined-name preserve check."
+  },
+  {
+    "id": "pivotrpt-t4-insert-games-row",
+    "workbook": "research/xlsx-bench/corpus/pivot-chart-report.xlsx",
+    "tier": 4,
+    "kind": "insert_row",
+    "prompt": "Add a new row to the raw data sheet for a Games category in 2006: cost 450000, revenue 612000. Put it right after the 2006 Electronics row.",
+    "expect": {
+      "text_cells": [
+        {
+          "sheet": "Sheet1",
+          "ref": "B8",
+          "value": "Games"
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "B9",
+          "value": "mMovies"
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "B14",
+          "value": "MMusic"
+        }
+      ],
+      "cells": [
+        {
+          "sheet": "Sheet1",
+          "ref": "A8",
+          "value": 2006.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "C8",
+          "value": 450000.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "D8",
+          "value": 612000.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "A9",
+          "value": 2006.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "C9",
+          "value": 961323.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "A14",
+          "value": 2007.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "C14",
+          "value": 875455.0,
+          "tol": 0.5
+        },
+        {
+          "sheet": "Sheet1",
+          "ref": "D14",
+          "value": 940136.1875,
+          "tol": 0.5
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "charts",
+      "pivot_tables",
+      "pivot_caches",
+      "merged_cells"
+    ],
+    "notes": "Sheet1 rows: 2(2005 Books)...5(2005 MMusic), 6(2006 Books), 7(2006 Electronics), 8(2006 mMovies), 9(2006 MMusic), 10(2007 Books)...13(2007 MMusic). Inserting 'Games'/2006/450000/612000 right after row7 (2006 Electronics) makes it the new row8, pushing the old row8 (mMovies) to row9, row9 (MMusic) to row10, ... old row13 (2007 MMusic) to row14. Checked the inserted row (A8/B8/C8/D8) plus two shifted rows (row9 = old mMovies/2006, row14 = old MMusic/2007) to prove nothing below the insertion point was corrupted or overwritten. The 3 pivot caches all source from Sheet1!A1:D13 (a plain range, not an Excel Table); whether their stored source ref grows to A1:D14 isn't independently assertable under this schema (no 'pivot_caches' key in `expect`), so this task's ripple is checked via the shifted-row cell values and general file validity, not the pivot internals."
+  },
+  {
+    "id": "pivotrpt-t5-rename-sheet2",
+    "workbook": "research/xlsx-bench/corpus/pivot-chart-report.xlsx",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Rename the 'Sheet2' tab (the yearly cost/revenue totals) to 'Yearly Totals'.",
+    "expect": {
+      "sheet_names": [
+        "Sheet1",
+        "Sheet6",
+        "Sheet5",
+        "Sheet4",
+        "Sheet3",
+        "Yearly Totals",
+        "Chart2"
+      ],
+      "chart_series": [
+        {
+          "part": "xl/charts/chart1.xml",
+          "cat_ref": "'Yearly Totals'!$A$4:$B$11"
+        },
+        {
+          "part": "xl/charts/chart1.xml",
+          "name_ref": "'Yearly Totals'!$C$3"
+        },
+        {
+          "part": "xl/charts/chart1.xml",
+          "val_ref": "'Yearly Totals'!$C$4:$C$11"
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "charts",
+      "pivot_tables",
+      "pivot_caches",
+      "merged_cells"
+    ],
+    "notes": "chart1.xml has exactly 1 series, entirely sourced from Sheet2: cat_ref 'Sheet2!$A$4:$B$11', name_ref 'Sheet2!$C$3', val_ref 'Sheet2!$C$4:$C$11' -- confirmed via inventory.py. This workbook has 0 defined names and 0 cross-sheet formulas (per corpus.json), so chart1's series refs are the ONLY textual references to 'Sheet2!' anywhere in the file, making this a clean, fully-assertable rename ripple. 'Sheet2' has no space so its refs are unquoted in the original; 'Yearly Totals' has a space so Excel must quote them, giving the expected post-rename refs 'Yearly Totals'!$A$4:$B$11 (cat_ref), 'Yearly Totals'!$C$3 (name_ref) and 'Yearly Totals'!$C$4:$C$11 (val_ref) -- none of which exist in the original file. We assert all three ref fields of the single series."
+  },
+  {
+    "id": "pension-t4-insert-cpi-linked-asset-row",
+    "workbook": "research/xlsx-bench/corpus/pension-hedging-stress-model.xlsx",
+    "tier": 4,
+    "kind": "insert_row",
+    "prompt": "On the asset rands-per-point table, add a new row for a CPI-linked bond type, between the existing Nominal and Real rows.",
+    "expect": {
+      "text_cells": [
+        {
+          "sheet": "AssetRandsPerPoint",
+          "ref": "M2",
+          "value": "Nominal"
+        },
+        {
+          "sheet": "AssetRandsPerPoint",
+          "ref": "M3",
+          "value": "CPI-linked"
+        },
+        {
+          "sheet": "AssetRandsPerPoint",
+          "ref": "M4",
+          "value": "Real"
+        }
+      ],
+      "tables": [
+        {
+          "name": "AssetRandsPerPoint",
+          "ref": "A1:O4"
+        }
+      ],
+      "defined_names": {
+        "Query_from_SILPEN#localSheetId=10": "AssetRandsPerPoint!$A$1:$O$4"
+      },
+      "no_new_errors": true
+    },
+    "preserve": [
+      "pivot_tables",
+      "pivot_caches",
+      "tables",
+      "conditional_formatting",
+      "data_validations",
+      "defined_names",
+      "comments",
+      "merged_cells"
+    ],
+    "notes": "AssetRandsPerPoint (table6, A1:O3) has exactly 2 data rows: row2 BondType='Nominal', row3 BondType='Real' (column M; all other columns blank in both rows). Inserting a new row for 'CPI-linked' between them makes it the new row3, pushing 'Real' to row4; table grows A1:O3 -> A1:O4. The workbook-scoped defined name 'Query_from_SILPEN#localSheetId=10' = 'AssetRandsPerPoint!$A$1:$O$3' must grow to $A$1:$O$4 along with the table -- a genuine, checkable ripple even though the row content itself is mostly blank template placeholders."
+  },
+  {
+    "id": "sparkext-t5-add-lookup-check-sheet",
+    "workbook": "research/xlsx-bench/corpus/sparkline-external-reference.xlsx",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Add a new sheet called 'Lookup Check' that shows the matched factor value for record 51064, pulled from Sheet2.",
+    "expect": {
+      "sheet_names": [
+        "Sheet1",
+        "Sheet2",
+        "Lookup Check"
+      ],
+      "no_new_errors": true,
+      "sheet_contains": [
+        {
+          "sheet": "Lookup Check",
+          "values": [
+            {
+              "value": 1.865463778313135e-05,
+              "tol": 1e-08,
+              "formula_contains": "Sheet2"
+            }
+          ]
+        }
+      ]
+    },
+    "preserve": [
+      "data_validations",
+      "defined_names",
+      "sparklines",
+      "external_links"
+    ],
+    "notes": "New 'Lookup Check' sheet appended at the end. B1 = Sheet2!L1 = 1.865463778313135e-05 (the pristine original value; unrelated to the t1 task above, which starts from its own fresh copy). This exercises the tier5 'add a summary sheet with cross-sheet formulas' shape as a genuinely distinct task from the two rename substitutions above. | 2026-09-26: converted to a position-independent sheet_contains check. The prompt never says which cells to use, and in the first recorded runs both arms built correct summary sheets with a header row, putting the values in B4-B6 rather than B1-B2. Each value must appear somewhere on the new sheet, as a live formula containing the original check's text where one was given."
+  },
+  {
+    "id": "kyc-t4-insert-ladakh-state",
+    "workbook": "research/xlsx-bench/corpus/kyc-intake-data-dictionary.xlsx",
+    "tier": 4,
+    "kind": "insert_row",
+    "prompt": "Add Ladakh to the state list, right after Jammu and Kashmir, with code 038.",
+    "expect": {
+      "text_cells": [
+        {
+          "sheet": "State Master",
+          "ref": "B2",
+          "value": "Jammu and Kashmir"
+        },
+        {
+          "sheet": "State Master",
+          "ref": "A3",
+          "value": "038"
+        },
+        {
+          "sheet": "State Master",
+          "ref": "B3",
+          "value": "Ladakh"
+        },
+        {
+          "sheet": "State Master",
+          "ref": "B4",
+          "value": "Himachal Pradesh"
+        },
+        {
+          "sheet": "State Master",
+          "ref": "B39",
+          "value": "Telangana"
+        }
+      ],
+      "no_new_errors": true
+    },
+    "preserve": [
+      "defined_names",
+      "protection",
+      "merged_cells",
+      "hyperlinks"
+    ],
+    "notes": "State Master lists 37 states/UTs, codes '001'..'037' in ascending row order (row2='001' Jammu and Kashmir ... row38='037' Telangana). Ladakh was a real 2019 split from Jammu and Kashmir, so inserting it right after J&K is authentic; it's given code '038' (the next available code, fully specified in the prompt to avoid any ambiguity about numbering) even though it's placed mid-list rather than appended, which is realistic for a hand-maintained reference list. New row3 = '038'/'Ladakh'; Himachal Pradesh (was row3) shifts to row4, ... Telangana (was row38) shifts to row39. The 'A' column is a text code (values like '001' with leading zeros), so C2/A2 is asserted as a string, not a number. State Master isn't an Excel Table, so there's no table ref to grow, but two of its hyperlink targets ('KYC'!B33 and B56, both 'State Master'!A1) point at a fixed A1 and so are unaffected by the row shift."
+  },
+  {
+    "id": "parking-t5-rename-detailed-report",
+    "workbook": "research/xlsx-bench/corpus/parking-study-report.xlsm",
+    "tier": 5,
+    "kind": "sheet_op",
+    "prompt": "Rename the 'Detailed_report' tab to 'Detail Report'.",
+    "expect": {
+      "sheet_names": [
+        "CCSInfo",
+        "General",
+        "Detail Report",
+        "Summary_report",
+        "Detailed_graph",
+        "Summary_graph",
+        "Tabelle1",
+        "Tabelle2",
+        "Tabelle3"
+      ],
+      "chart_series": [
+        {
+          "part": "xl/charts/chart1.xml",
+          "cat_ref": "CCSInfo!$W$1:$W$30"
+        },
+        {
+          "part": "xl/charts/chart1.xml",
+          "val_ref": "'Detail Report'!$I$8:$I$37"
+        }
+      ],
+      "defined_names": {
+        "Ab_apr_60s_Cpt_FormPil": "'Detail Report'!$Z$6",
+        "Abandons_Cpt_FormPil": "'Detail Report'!$S$7"
+      },
+      "no_new_errors": true
+    },
+    "preserve": [
+      "vba",
+      "charts",
+      "defined_names",
+      "images",
+      "comments",
+      "protection",
+      "merged_cells"
+    ],
+    "notes": "chart1.xml's 5 series are all sourced from Detailed_report ($I$8:$I$37, $AC$8:$AC$37, $AB$8:$AB$37, $AA$8:$AA$37, $S$8:$S$37), except the shared category axis which points at CCSInfo (untouched by this rename, asserted here to prove the tool doesn't over-rewrite unrelated refs). Renaming to 'Detail Report' (space, needs quoting) means the expected post-rename val_ref for the first series is 'Detail Report'!$I$8:$I$37 -- which does not exist in the original file (the original is the unquoted 'Detailed_report!$I$8:$I$37'). 62 of the workbook's 213 defined names also anchor to Detailed_report; we spot-check 2. This is the richest fully-assertable rename ripple in the workbook (chart_series is a genuine TASK_SCHEMA expect key, unlike the hyperlink/pivot gaps noted elsewhere), so it's kept as the workbook's native (non-substituted) tier5 task."
+  }
+]

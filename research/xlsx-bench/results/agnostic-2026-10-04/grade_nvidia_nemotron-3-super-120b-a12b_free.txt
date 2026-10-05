@@ -1,0 +1,19 @@
+packages/safexl/.venv/lib/python3.11/site-packages/openpyxl/worksheet/_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+packages/safexl/.venv/lib/python3.11/site-packages/openpyxl/worksheet/_reader.py:329: UserWarning: Sparkline Group extension is not supported and will be removed
+  warn(msg)
+packages/safexl/.venv/lib/python3.11/site-packages/openpyxl/worksheet/_reader.py:329: UserWarning: Sparkline Group extension is not supported and will be removed
+  warn(msg)
+packages/safexl/.venv/lib/python3.11/site-packages/openpyxl/worksheet/_reader.py:329: UserWarning: Sparkline Group extension is not supported and will be removed
+  warn(msg)
+packages/safexl/.venv/lib/python3.11/site-packages/openpyxl/worksheet/_reader.py:329: UserWarning: Sparkline Group extension is not supported and will be removed
+  warn(msg)
+
+=== Per-arm summary ===
+arm               n  correct%  preserved%   valid%   pass%
+B                24     83.3%       87.5%    95.8%   83.3%
+
+=== Per-arm-per-tier summary ===
+arm            tier    n  correct%  preserved%   valid%   pass%
+B                 4   15     80.0%       80.0%    93.3%   80.0%
+B                 5    9     88.9%      100.0%   100.0%   88.9%
