@@ -1,4 +1,4 @@
-"""SafeXL — edit Excel workbooks in headless environments without breaking them.
+"""SafeXL — edit Excel workbooks in headless environments by changing only the XML an edit needs.
 
 Public API:
 
@@ -24,7 +24,7 @@ from .inspect import FeatureInventory, SheetInspection, VbaInfo, WorkbookInspect
 from .structural import add_sheet, insert_rows, rename_sheet
 from .validate import FileReport, Finding, validate_bytes_ok, validate_workbook
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 __all__ = [
     "edit",

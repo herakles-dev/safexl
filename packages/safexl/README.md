@@ -83,7 +83,7 @@ claude mcp add --transport http safexl http://127.0.0.1:8000/mcp
 | `safexl_add_sheet` | Add a new, empty worksheet. | `path`, `sheet_name`, `output_path`, `overwrite` | `file_base64`, `sheet_name` |
 | `safexl_resize_table` | Change the range of an Excel table. Only the table definition changes. | `path`, `table`, `ref`, `sheet_name`, `output_path`, `overwrite` | `file_base64`, `table`, `ref`, `sheet_name` |
 | `safexl_diff` | Before/after cell diff plus a SHA-256 diff of every internal part. | `before_path`, `after_path`, `max_cells` | `before_base64`, `after_base64`, `max_cells` |
-| `safexl_verify` | Compare an edited workbook with its original and return a receipt: verdict (intact, rewritten, damaged or invalid), changed parts, `summary`, `added_risk` and `cell_changes`. Read-only. | `before_path`, `after_path` | `before_base64`, `after_base64` |
+| `safexl_verify` | Compare an edited workbook with its original and return a receipt: verdict (intact, rewritten, damaged or invalid), changed parts, `summary`, `added_risk`, `cell_changes` and `reference_changes`. Read-only. | `before_path`, `after_path` | `before_base64`, `after_base64` |
 | `safexl_salvage` | Rebuild a workbook that another library re-saved: re-apply its cell edits to the original. Status is salvaged, partial, unsupported or nothing_to_do. `force` rebuilds even when the file looks intact. | `original_path`, `damaged_path`, `output_path`, `overwrite`, `force` | `original_base64`, `damaged_base64`, `force` |
 
 `changes` is a list of `{"sheet": "Sheet1", "cell": "B7", "value": 42}` or
@@ -154,7 +154,7 @@ Result codes of 10 and up never overlap the error codes. Exit code 1 is an error
 | `insert-cells` | Insert blank cells in a column span only; those columns shift down. Use it instead of `insert-rows` when the sheet has other lists or tables side by side that must not move. A reference that would be torn is refused with the reason (exit 1). | 0 ok, 1 error, 2 usage |
 | `resize-table` | Set the range of an Excel table. | 0 ok, 1 error, 2 usage |
 | `inspect`, `diff` | Read-only report and before/after diff. | 0 ok, 1 error |
-| `verify BEFORE AFTER` | Receipt for an edit: intact, rewritten, damaged or invalid. | 0 intact, 10 rewritten, 11 damaged, 12 invalid, 13 intact but risky addition (`--strict` only) |
+| `verify BEFORE AFTER` | Receipt for an edit: intact, rewritten, damaged or invalid. | 0 intact, 10 rewritten, 11 damaged, 12 invalid, 13 intact but risky addition (`--strict` only), 14 intact but a defined name or table range changed (`--strict` only) |
 | `view PATH` | Compact cell listing, one line per cell. | 0 ok, 1 error |
 | `salvage ORIGINAL DAMAGED -o OUT` | Re-apply the edits found in a damaged copy onto the original. | 0 salvaged or nothing to do, 10 partial, 11 unsupported |
 | `guard snapshot` / `guard check` | Snapshot workbooks, then detect and undo damage by another writer. | `check`: 0 nothing wrong, 10 a file was flagged |
@@ -193,9 +193,20 @@ web-service or DDE formula and similar), and a line per changed sheet such as
 be aligned). `intact` covers tracked features and untouched parts only; it does not
 mean no cell changed, so read the summary. An added risk does not change the verdict
 or the exit code, but with `--strict` an intact workbook that gained a risk exits 13
-("intact, but something risky was added"). The MCP `safexl_verify` tool returns the
-same `summary`, `added_risk` and `cell_changes` (capped at 50 sheets, with
-`cell_changes_truncated` when cut).
+("intact, but something risky was added").
+
+The receipt also lists `reference_changes`: every defined name and table range whose
+text differs between the two files. Each entry has `kind` (`defined_name` or `table`),
+`name`, `scope`, `before` and `after`; an added or removed name has `null` for the
+missing side. A listed change is a fact, not a verdict. A table that grew because you
+added a row is listed too, and the receipt cannot know which changes you wanted.
+Sheet renames are not listed. With `--strict`, an intact workbook with no added risk
+but a non-empty `reference_changes` exits 14; 13 wins if both apply. Data-validation
+ranges and chart series references are not compared.
+
+The MCP `safexl_verify` tool returns the same `summary`, `added_risk`,
+`cell_changes` (capped at 50 sheets, with `cell_changes_truncated` when cut) and
+`reference_changes`.
 
 Every write is read back before the output is kept. If the read-back does not match,
 the edit fails naming the cell (CLI exit 1; MCP error `write_not_confirmed`) and no

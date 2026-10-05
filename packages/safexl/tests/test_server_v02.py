@@ -126,7 +126,7 @@ def test_new_tool_descriptions_lead_with_when_to_use(mode):
 def test_version_is_0_2_0():
     import safexl_mcp
 
-    assert safexl_mcp.__version__ == "0.2.0"
+    assert safexl_mcp.__version__ == "0.2.1"
 
 
 # ---------------------------------------------------------------- verify

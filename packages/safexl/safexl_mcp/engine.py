@@ -1,5 +1,5 @@
 """SafeXL engine core: edit .xlsx/.xlsm workbooks in headless environments
-without breaking anything Excel (or LibreOffice) needs to open them cleanly.
+by changing only the XML an edit needs, so Excel (or LibreOffice) can open them.
 
 TECHNIQUE
 ---------

@@ -54,7 +54,7 @@ def test_identical_file_is_intact_with_matching_hashes():
 def test_receipt_has_every_documented_key():
     r = verify(fixture_path("WithChart.xlsx"), fixture_path("WithChart.xlsx"))
     assert set(r) == {"verdict", "valid", "lost_features", "rebuilt", "parts", "before_sha256",
-                      "after_sha256", "reasons", "added_risk", "cell_changes", "summary"}
+                      "after_sha256", "reasons", "added_risk", "cell_changes", "reference_changes", "summary"}
     assert set(r["parts"]) == {"unchanged", "changed", "added", "removed"}
 
 

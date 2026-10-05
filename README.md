@@ -18,7 +18,7 @@ The two arms are not the same setup. The skill arm had Anthropic's skill, a one-
 
 The three runs that failed. Once the model wrote a lookup formula that evaluates to #N/A. Twice it inserted a whole row where the task needed an insert limited to some columns, and that moved two defined names.
 
-One miss belongs to SafeXL itself. In my own check after the runs, `safexl verify` said "intact" for all 24 outputs, including the two that moved defined names. You can't repeat that check from this repo, because the output files aren't in it. The receipt does not flag a reference that moved. The guard hook had nothing to act on in any of the 24 runs.
+One miss belongs to SafeXL itself. In my own check after the runs, `safexl verify` said "intact" for all 24 outputs, including the two that moved defined names. You can't repeat that check from this repo, because the output files aren't in it. Version 0.2.0, which these runs used, did not flag a reference that moved. Version 0.2.1 lists every defined name and table range that changed. I ran it again on the recorded outputs: the two failed runs now name the two moved names, `dropdown` and `droptable`, along with two names the task meant to grow. The verdict is still "intact", because the receipt reports the change and cannot know whether it was wanted. The guard hook had nothing to act on in any of the 24 runs.
 
 I also ran other models through SafeXL's MCP tools only. I did not run any of them without SafeXL. These rows show what each model managed with the tools. They do not show what the tools added.
 

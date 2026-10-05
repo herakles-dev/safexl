@@ -29,7 +29,7 @@ safexl_mcp.inspect / safexl_mcp.diff for details.
 beside a table); ``--no-extend-tables`` turns that off. Errors keep one convention everywhere:
 1 = SafeXLError (missing file, bad input), 2 = usage. Result codes sit outside that range: ``verify``
 exits 0 intact, 10 rewritten, 11 damaged, 12 invalid (``--strict`` adds 13: intact, but something risky
-was added); ``salvage`` exits 0 salvaged/nothing_to_do,
+was added; 14: intact, nothing risky added, but a defined name or table range changed; 13 wins when both apply);``salvage`` exits 0 salvaged/nothing_to_do,
 10 partial, 11 unsupported; ``guard check`` exits 0 when nothing was wrong, 10 when a file was flagged.
 """
 from __future__ import annotations
@@ -105,7 +105,7 @@ def _parse_formula(arg: str, default_sheet: str | None = None) -> dict:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="safexl",
-        description="Edit Excel workbooks in headless environments without breaking them.",
+        description="Edit existing Excel workbooks in headless environments by changing only the XML an edit needs, and verify what changed.",
     )
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -224,7 +224,7 @@ def build_parser() -> argparse.ArgumentParser:
     ver_p.add_argument(
         "--strict",
         action="store_true",
-        help="exit 13 when the file is intact but something risky was added (external link, hidden sheet, ...)",
+        help="exit 13 when the file is intact but something risky was added (external link, hidden sheet, ...); exit 14 when it is intact, nothing risky was added, but a defined name or table range changed (13 wins if both)",
     )
 
     view_p = sub.add_parser(
@@ -320,6 +320,8 @@ def _print_verify(r: dict) -> None:
         print(r["summary"])
     for risk in r.get("added_risk", []):
         print(f"  added: {risk['risk']}: {risk['detail']}")
+    for ref in r.get("reference_changes") or []:
+        print(f"  reference: {ref['kind']} {ref['name']} ({ref['scope']}): {ref['before']} -> {ref['after']}")
     for sheet, c in (r.get("cell_changes") or {}).items():
         line = _cell_change_line(c)
         if line:
@@ -574,8 +576,11 @@ def _main(argv: list[str] | None) -> int:
             print(json.dumps(receipt, indent=2))
         else:
             _print_verify(receipt)
-        if args.strict and receipt["verdict"] == "intact" and receipt.get("added_risk"):
-            return 13
+        if args.strict and receipt["verdict"] == "intact":
+            if receipt.get("added_risk"):
+                return 13
+            if receipt.get("reference_changes"):
+                return 14
         return _VERIFY_EXIT[receipt["verdict"]]
 
     if args.command == "view":

@@ -24,6 +24,8 @@ CHANGED, because a workbook can be weaponised or silently altered without losing
                    whose formula differs, whose style index differs, that were added, that were removed,
                    rows removed, and ``cells_changed`` (distinct cells with any difference). Positional:
                    an insert-rows edit reports the shifted cells.
+    reference_changes = defined names and table ranges whose text differs (moved, added or removed):
+                   {"kind", "name", "scope", "before", "after"}; informational, the verdict is unchanged.
     summary      = one plain sentence saying exactly what the receipt covers.
 
 Cell comparison is a streamed merge-join over both sheets in document order: memory is one row per side
@@ -868,6 +870,92 @@ def _analyse_changes(before: str | Path, after: str | Path, fp_before: dict, fp_
     return risks, changes, problems
 
 
+_MAX_REFERENCE_CHANGES = 200
+
+
+_SHEET_PREFIX = re.compile(r"(?:'((?:[^']|'')+)'|([^\W\d][\w.]*))!")
+
+
+def _canonical(text: str, by_name: dict[str, str]) -> str:
+    """``text`` with every sheet prefix naming a known sheet replaced by its sheetId, so a renamed
+    sheet (quoted or unquoted) compares equal to its old name."""
+    def sub(m: re.Match) -> str:
+        name = m.group(1).replace("''", "'") if m.group(1) is not None else m.group(2)
+        sid = by_name.get(name)
+        return f"[{sid}]!" if sid is not None else m.group(0)
+    return _SHEET_PREFIX.sub(sub, text)
+
+
+def _defined_names(zf: zipfile.ZipFile) -> dict[tuple[str, str], tuple[str, str, str]]:
+    """{(scope sheetId or "workbook", name): (scope label, range text, canonical text)} from xl/workbook.xml."""
+    root = ET.fromstring(zf.read("xl/workbook.xml"))
+    sheets: list[tuple[str, str]] = []  # (sheetId, name) in workbook order
+    names: list[tuple[str | None, str, str]] = []
+    for el in root.iter():
+        if _main(el.tag, "sheet"):
+            sheets.append((el.get("sheetId") or f"name:{el.get('name')}", el.get("name") or ""))
+        elif _main(el.tag, "definedName"):
+            names.append((el.get("localSheetId"), el.get("name") or "", (el.text or "").strip()))
+    by_name = {n: sid for sid, n in sheets}
+    out: dict[tuple[str, str], tuple[str, str, str]] = {}
+    for local, name, text in names:
+        key_scope, label = "workbook", "workbook"
+        if local is not None:
+            try:
+                key_scope, label = sheets[int(local)]
+            except (ValueError, IndexError):
+                key_scope = label = f"sheet {local}"
+        out[(key_scope, name)] = (label, text, _canonical(text, by_name))
+    return out
+
+
+def _table_refs(zf: zipfile.ZipFile) -> dict[str, str]:
+    """{table name: ref} from xl/tables/*.xml; an unreadable table part is skipped."""
+    out: dict[str, str] = {}
+    for part in zf.namelist():
+        if part.startswith("xl/tables/") and part.endswith(".xml"):
+            try:
+                el = ET.fromstring(zf.read(part))
+            except ET.ParseError:
+                continue
+            if _main(el.tag, "table") and el.get("ref"):
+                out[el.get("displayName") or el.get("name") or part] = el.get("ref")
+    return out
+
+
+def _reference_changes(before: str | Path, after: str | Path) -> tuple[list[dict], list[str]]:
+    """-> (reference_changes, problems): defined names and table ranges whose text differs. Never raises
+    on malformed XML; ``problems`` says what was skipped."""
+    changes: list[dict] = []
+    problems: list[str] = []
+    try:
+        with zipfile.ZipFile(before) as zb, zipfile.ZipFile(after) as za:
+            try:
+                nb, na = _defined_names(zb), _defined_names(za)
+                for key in sorted(nb.keys() | na.keys()):
+                    vb, va = nb.get(key), na.get(key)
+                    if vb is not None and va is not None and vb[2] == va[2]:
+                        continue  # same range once renamed sheets are matched by sheetId
+                    changes.append({"kind": "defined_name", "name": key[1], "scope": (va or vb)[0],
+                                    "before": vb[1] if vb else None, "after": va[1] if va else None})
+            except (ET.ParseError, KeyError) as exc:
+                problems.append(f"defined names could not be compared ({type(exc).__name__})")
+            try:
+                tb, ta = _table_refs(zb), _table_refs(za)
+                for name in sorted(tb.keys() | ta.keys()):
+                    if tb.get(name) != ta.get(name):
+                        changes.append({"kind": "table", "name": name, "scope": "workbook",
+                                        "before": tb.get(name), "after": ta.get(name)})
+            except (KeyError, RuntimeError, zipfile.BadZipFile) as exc:
+                problems.append(f"table ranges could not be compared ({type(exc).__name__})")
+    except (zipfile.BadZipFile, OSError, RuntimeError) as exc:
+        problems.append(f"reference comparison skipped ({type(exc).__name__})")
+    if len(changes) > _MAX_REFERENCE_CHANGES:
+        problems.append(f"reference_changes capped at {_MAX_REFERENCE_CHANGES} of {len(changes)}")
+        changes = changes[:_MAX_REFERENCE_CHANGES]
+    return changes, problems
+
+
 def _plural(n: int, word: str) -> str:
     return f"{n} {word}" + ("" if n == 1 else "s")
 
@@ -900,7 +988,12 @@ def _summary(receipt: dict[str, Any]) -> str:
         cells += " (comparison capped or unordered: counts are lower bounds)"
     risk = receipt["added_risk"]
     risky = "nothing risky was added" if not risk else "risky additions: " + ", ".join(r["risk"] for r in risk)
-    return f"{lead}; {cells}; {risky}."
+    refs = receipt.get("reference_changes") or []
+    moved = ""
+    if refs:
+        shown = ", ".join(dict.fromkeys(r["name"] for r in refs[:6])) + (", ..." if len(refs) > 6 else "")
+        moved = f"; {_plural(len(refs), 'reference')} changed: {shown}"
+    return f"{lead}; {cells}{moved}; {risky}."
 
 
 def verify(before: str | Path, after: str | Path) -> dict[str, Any]:
@@ -916,6 +1009,7 @@ def verify(before: str | Path, after: str | Path) -> dict[str, Any]:
         "reasons": [],
         "added_risk": [],
         "cell_changes": {},
+        "reference_changes": [],
         "summary": "",
     }
     reasons: list[str] = receipt["reasons"]
@@ -970,5 +1064,7 @@ def verify(before: str | Path, after: str | Path) -> dict[str, Any]:
         risks, changes, problems = [], {}, [f"added-risk and cell comparison skipped ({type(exc).__name__}: {exc})"]
     receipt["added_risk"], receipt["cell_changes"] = risks, changes
     reasons.extend(f"not compared: {p}" for p in problems)
+    receipt["reference_changes"], ref_problems = _reference_changes(before, after)
+    reasons.extend(f"not compared: {p}" for p in ref_problems)
     receipt["summary"] = _summary(receipt)
     return receipt

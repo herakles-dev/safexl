@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "safexl-mcp"
-version = "0.2.0"
-description = "Edit Excel workbooks in headless environments without breaking them (direct-XML-injection engine)."
+version = "0.2.1"
+description = "Edit existing Excel workbooks in headless environments by changing only the XML an edit needs, and verify what changed."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }

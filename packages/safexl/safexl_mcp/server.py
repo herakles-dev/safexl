@@ -1,5 +1,5 @@
 """SafeXL MCP server: lets any MCP-capable agent inspect, edit, and diff
-existing Excel workbooks (.xlsx/.xlsm) without breaking them.
+existing Excel workbooks (.xlsx/.xlsm), changing only the XML an edit needs.
 
     safexl-mcp                          # stdio (default) -- local file paths
     safexl-mcp --http --port 8000       # streamable HTTP -- base64 file content only
@@ -1473,7 +1473,7 @@ def _port(raw: str) -> int:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog="safexl-mcp",
-        description="SafeXL MCP server: inspect, edit, and diff existing Excel workbooks without breaking them.",
+        description="SafeXL MCP server: inspect, edit, diff and verify existing Excel workbooks (.xlsx/.xlsm).",
     )
     parser.add_argument(
         "--http",
